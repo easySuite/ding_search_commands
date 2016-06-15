@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * Ding search commands module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ding_search_commands_menu() {
+  $items = array();
+
+  $items['admin/config/ding/search_commands'] = array(
+    'title' => 'Search commands',
+    'description' => 'Manage search terms',
+    'page callback' => 'ding_search_commands_block_view',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'ding_search_commands.admin.inc',
+  );
+
+  $items['search_commands/delete/%'] = array(
+    'title' => 'Delete term',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ding_search_commands_delete_confirm', 2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'ding_search_commands.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ding_search_commands_form_alter(&$form, &$form_state, $form_id) {
+
+}
