@@ -3,9 +3,7 @@
   <?php if (!empty($ops)): ?>
     <div class="search-term-ops">
       <?php foreach ($ops as $op): ?>
-        <div class="search-term-op">
-          <?php print $op; ?>
-        </div>
+        <div class="search-term-op"><?php print $op; ?></div>
       <?php endforeach; ?>
     </div>
   <?php endif; ?>
