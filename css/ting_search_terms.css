@@ -1,0 +1,7 @@
+#ting-search-terms-container {
+  height: 600px;
+  overflow-y: scroll;
+}
+.search-term-op {
+  cursor: pointer;
+}

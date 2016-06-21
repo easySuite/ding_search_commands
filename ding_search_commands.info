@@ -1,4 +1,0 @@
-name = Ding Search Commands
-description = Extend search for with simple query builder
-core = 7.x
-version = 7.x-1.0

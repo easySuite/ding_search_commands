@@ -1,0 +1,110 @@
+<?php
+/**
+ * @file
+ * Search terms hooks definitions.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
+  $path = drupal_get_path('module', 'ting_search_terms');
+  $form['search-terms'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search terms'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#weight' => '102',
+    '#tree' => TRUE,
+    '#attributes' => array('id' => array('ting-search-terms-fieldset')),
+    '#attached' => array(
+      'js' => array(
+        array(
+          'data' => $path . '/js/ting_search_terms.js',
+        ),
+        array(
+          'data' => array(
+            'searchTerms' => _ting_search_terms_get_terms(),
+          ),
+          'type' => 'setting',
+        ),
+        array(
+          /*
+           * Default jQuery ui doesn't support autocomplete widget,
+           * jQuery ui 1.11 is inserted.
+           */
+          'data' => $path . '/js/jquery-ui.min.js',
+        ),
+      ),
+      'css' => array(
+        $path . '/css/ting_search_terms.css',
+      ),
+    ),
+  );
+
+  $nid = variable_get('ting_search_terms_page', FALSE);
+  $form['search-terms']['list'] = array(
+    '#markup' => _ting_search_terms_markup($nid),
+  );
+}
+
+/**
+ * Generate default html markup for the autocomplete fieldset.
+ *
+ * @param int
+ *   Ding page node id.
+ *
+ * @return string
+ *   Markup for the fieldset.
+ */
+function _ting_search_terms_markup($nid) {
+  $ops = array('AND', 'OR', 'NOT', 'ANY', 'ALL');
+  array_walk($ops, function (&$op) {
+    $op = '<div class="search-term-op">' . $op . '</div>';
+  });
+  $html_ops = '<div class="search-term-ops">' . implode('', $ops) . '</div>';
+  if ($nid) {
+    $more_info = '<div class="search-terms-more">' . l(t('See more info about search terms'), '/node/' . $nid) . '</div>';
+  }
+
+  return '<div id="ting-search-terms-container"></div><div class="search-term-op-bar">' . $html_ops . $more_info . '</div>';
+}
+
+/**
+ * Get all search terms from the opensearch service.
+ *
+ * @return array
+ *   Term keys with their description.
+ */
+function _ting_search_terms_get_terms() {
+  $service_url = variable_get('ting_search_url', '');
+  $service_url .= 'opensearch_cql.xml';
+
+  $options = array();
+  $data = file_get_contents($service_url);
+  if ($data) {
+    $xml = new \SimpleXMLElement($data);
+
+    foreach ($xml->indexInfo->index as $index) {
+      $set = (string) $index->map->name['set'];
+      if ($set == 'term') {
+        $titles = $index->title;
+        $description = '';
+        foreach ($titles as $title) {
+          $lang = (string) $title['lang'];
+          if ($lang == 'en') {
+            $description = (string) $title;
+          }
+        }
+
+        $name = (string) $index->map->name;
+        $key = implode('.', array($set, $name));
+
+        // The key 'value' is mandatory for the jquery ui autocomplete library.
+        $options[] = array('value' => $key, 'description' => $description);
+      }
+    }
+  }
+
+  return $options;
+}
