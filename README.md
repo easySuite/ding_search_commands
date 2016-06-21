@@ -1,1 +1,1 @@
-# ding_search_commands
+# ting_search_terms
