@@ -5,6 +5,19 @@
  */
 
 /**
+ * Implements hook_theme().
+ */
+function ting_search_terms_theme($existing, $type, $theme, $path) {
+  return array(
+    'search_terms_fieldset' => array(
+      'variables' => array(),
+      'template' => 'search-terms-fieldset',
+      'path' => $path . '/templates',
+    ),
+  );
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
@@ -41,33 +54,22 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
       ),
     ),
   );
-
   $nid = variable_get('ting_search_terms_page', FALSE);
   $form['search-terms']['list'] = array(
-    '#markup' => _ting_search_terms_markup($nid),
+    '#markup' => theme('search_terms_fieldset', array('nid' => $nid)),
   );
 }
 
 /**
- * Generate default html markup for the autocomplete fieldset.
- *
- * @param int
- *   Ding page node id.
- *
- * @return string
- *   Markup for the fieldset.
+ * Implements hook_preprocess_HOOK().
  */
-function _ting_search_terms_markup($nid) {
-  $ops = array('AND', 'OR', 'NOT', 'ANY', 'ALL');
-  array_walk($ops, function (&$op) {
-    $op = '<div class="search-term-op">' . $op . '</div>';
-  });
-  $html_ops = '<div class="search-term-ops">' . implode('', $ops) . '</div>';
-  if ($nid) {
-    $more_info = '<div class="search-terms-more">' . l(t('See more info about search terms'), '/node/' . $nid) . '</div>';
-  }
+function ting_search_terms_preprocess_search_terms_fieldset(&$variables) {
+  $variables['ops'] = array('AND', 'OR', 'NOT', 'ANY', 'ALL');
 
-  return '<div id="ting-search-terms-container"></div><div class="search-term-op-bar">' . $html_ops . $more_info . '</div>';
+  $nid = $variables['nid'];
+  if ($nid) {
+    $variables['more_link'] = l(t('See more info about search terms'), '/node/' . $nid);
+  }
 }
 
 /**
@@ -77,33 +79,41 @@ function _ting_search_terms_markup($nid) {
  *   Term keys with their description.
  */
 function _ting_search_terms_get_terms() {
-  $service_url = variable_get('ting_search_url', '');
-  $service_url .= 'opensearch_cql.xml';
-
+  $cid = 'ting_search_terms';
   $options = array();
-  $data = file_get_contents($service_url);
-  if ($data) {
-    $xml = new \SimpleXMLElement($data);
 
-    foreach ($xml->indexInfo->index as $index) {
-      $set = (string) $index->map->name['set'];
-      if ($set == 'term') {
-        $titles = $index->title;
-        $description = '';
-        foreach ($titles as $title) {
-          $lang = (string) $title['lang'];
-          if ($lang == 'en') {
-            $description = (string) $title;
+  if ($cache = cache_get($cid)) {
+    $options = $cache->data;
+  }
+  else {
+    $service_url = variable_get('ting_search_url', '');
+    $service_url .= 'opensearch_cql.xml';
+
+    $data = file_get_contents($service_url);
+    if ($data) {
+      $xml = new \SimpleXMLElement($data);
+
+      foreach ($xml->indexInfo->index as $index) {
+        $set = (string) $index->map->name['set'];
+        if ($set == 'term') {
+          $titles = $index->title;
+          $description = '';
+          foreach ($titles as $title) {
+            $lang = (string) $title['lang'];
+            if ($lang == 'en') {
+              $description = (string) $title;
+            }
           }
+
+          $name = (string) $index->map->name;
+          $key = $set . $name;
+
+          // The key 'value' is mandatory for the jquery ui autocomplete library.
+          $options[] = array('value' => $key, 'description' => $description);
         }
-
-        $name = (string) $index->map->name;
-        $key = implode('.', array($set, $name));
-
-        // The key 'value' is mandatory for the jquery ui autocomplete library.
-        $options[] = array('value' => $key, 'description' => $description);
       }
     }
+    cache_set($cid, $options);
   }
 
   return $options;
