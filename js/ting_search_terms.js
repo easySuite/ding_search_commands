@@ -19,7 +19,7 @@
 
       // Append logical operation to the search field input.
       $('.search-term-op').on('click', function (event) {
-        if ($searchField.val() != '') {
+        if (getLastTerm($searchField.val())) {
           $searchField.val($searchField.val() + ' ' + $(this).text() + ' ');
         }
         $searchField.focus();
