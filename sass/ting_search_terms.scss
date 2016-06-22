@@ -62,6 +62,7 @@ fieldset#ting-search-terms-fieldset {
     padding-left: 10px;
     font-weight: bold;
     cursor: pointer;
+    color: #4c4c4c;
   }
 
   .search-terms-more {
@@ -185,7 +186,10 @@ div.search {
       min-width: 100%;
       margin-top: -5px;
       margin-left: 0;
-      height: 60px
+      height: 60px;
+      border: solid;
+      border-width: 1px;
+      color: #E1E1E1;
     }
 
     div .search-term-op {
