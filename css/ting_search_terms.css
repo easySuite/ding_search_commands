@@ -1,0 +1,199 @@
+/**
+ * Mixins
+ *
+ * @author magnify
+ */
+/* Breakpoints
+   ========================================================================== */
+/* Media query
+   ========================================================================== */
+/* Breakpoints
+   ========================================================================== */
+/* Typography mixins
+ *
+ * These are mixins to allow for use in media queries
+   ========================================================================== */
+/* Availability
+   ========================================================================== */
+/* Pseudo arrow
+ *
+ * Usage example: pseudo-arrow(10px, #000, top, center, $offset: 20px)
+   ========================================================================== */
+/* Colors variables
+   ========================================================================== */
+fieldset#ting-search-terms-fieldset {
+  border: none !important;
+  position: relative;
+  top: 23px;
+  padding-right: 0px;
+}
+fieldset#ting-search-terms-fieldset legend {
+  position: absolute;
+  top: -65px;
+  right: 155px;
+  padding: 0;
+  margin: 0;
+}
+fieldset#ting-search-terms-fieldset legend a {
+  color: #00b7e7;
+}
+fieldset#ting-search-terms-fieldset .fieldset-wrapper {
+  position: relative;
+}
+fieldset#ting-search-terms-fieldset .search-term-ops {
+  background: #E1E1E1;
+  max-width: 1180px;
+  min-width: 100%;
+  margin-left: -20px;
+  height: 30px;
+  padding-top: 10px;
+}
+fieldset#ting-search-terms-fieldset div .search-term-op {
+  display: inline;
+  padding-right: 5px;
+  padding-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #4c4c4c;
+}
+fieldset#ting-search-terms-fieldset .search-terms-more {
+  float: right;
+  margin-top: -32px;
+  font-style: italic;
+  padding-right: 14px;
+}
+fieldset#ting-search-terms-fieldset .search-terms-more a {
+  color: #4C4C4C;
+}
+
+#ting-search-terms-container {
+  height: 500px;
+  max-width: 1180px;
+  min-width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #fff;
+  margin-top: -34px;
+  margin-left: -20px;
+}
+#ting-search-terms-container ul {
+  top: 0 !important;
+}
+#ting-search-terms-container ul li.search-term {
+  border-bottom-style: solid;
+  border-bottom-color: #E1E1E1;
+  border-bottom-width: 1px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+#ting-search-terms-container ul li.search-term:hover {
+  background: #ededed;
+}
+#ting-search-terms-container .search-term {
+  cursor: pointer;
+  padding-left: 15px;
+}
+#ting-search-terms-container .search-term .search-key {
+  font-weight: bold;
+  margin: 0;
+}
+#ting-search-terms-container .search-term .search-description {
+  font-style: italic;
+  margin: 0;
+}
+
+div.search #search-block-form .fieldset-wrapper #ting-search-terms-container {
+  height: 300px;
+  max-width: 850px;
+  min-width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-style: solid;
+  border-color: #E1E1E1;
+  border-width: 1px;
+}
+div.search #search-block-form .fieldset-wrapper #ting-search-terms-container ul {
+  max-width: 850px;
+  min-width: 100%;
+}
+div.search #ting-search-terms-fieldset .search-term-ops {
+  max-width: 850px;
+}
+div.search #ting-search-terms-fieldset legend a {
+  color: #00b7e7;
+}
+div.search #ting-search-terms-fieldset div .search-term-op {
+  display: inline;
+  padding-right: 5px;
+  padding-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+div.search #ting-search-terms-fieldset .search-terms-more {
+  float: right;
+  margin-top: -32px;
+  font-style: italic;
+  padding-right: 14px;
+}
+div.search #ting-search-terms-fieldset .search-terms-more a {
+  color: #4C4C4C;
+}
+
+@media only screen and (max-width: 768px) {
+  fieldset#ting-search-terms-fieldset {
+    position: relative;
+    padding: 0;
+  }
+  fieldset#ting-search-terms-fieldset legend {
+    position: absolute;
+    top: -123px;
+    right: 20px;
+  }
+  fieldset#ting-search-terms-fieldset .search-term-ops {
+    max-width: 300px;
+    min-width: 100%;
+    margin-top: -5px;
+    margin-left: 0;
+    height: 60px;
+    border: solid;
+    border-width: 1px;
+    color: #E1E1E1;
+  }
+  fieldset#ting-search-terms-fieldset div .search-term-op {
+    display: inline;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  fieldset#ting-search-terms-fieldset .search-terms-more {
+    display: block !important;
+    float: left;
+    padding-left: 6px;
+    margin-top: -32px;
+  }
+
+  #ting-search-terms-container {
+    height: 300px;
+    max-width: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-width: 100%;
+    margin: 0;
+  }
+  #ting-search-terms-container ul li.search-term {
+    max-width: 300px;
+    min-width: 100%;
+    top: 0 !important;
+  }
+
+  div.search fieldset#ting-search-terms-fieldset {
+    padding-bottom: 20px;
+  }
+  div.search fieldset#ting-search-terms-fieldset .search-term-ops {
+    margin-top: -5px;
+    margin-left: 0;
+    height: 60px;
+  }
+  div.search fieldset#ting-search-terms-fieldset .search-terms-more {
+    float: left;
+  }
+}
