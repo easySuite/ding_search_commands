@@ -106,7 +106,7 @@ function _ting_search_terms_get_terms() {
           }
 
           $name = (string) $index->map->name;
-          $key = $set . $name;
+          $key = $set . '.' . $name;
 
           // The key 'value' is mandatory for the jquery ui autocomplete library.
           $options[] = array('value' => $key, 'description' => $description);
