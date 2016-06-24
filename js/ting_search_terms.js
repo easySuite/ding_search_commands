@@ -59,8 +59,12 @@
           var lastIndex = $inputValue.lastIndexOf(getLastTerm($inputValue));
           $inputValue = $inputValue.substring(0, lastIndex);
 
-          $(this).val($inputValue + ui.item.value + '=');
+          $(this).val($inputValue + ui.item.value + '=""');
           $(this).focus();
+
+          // Put caret inside of the quotes.
+          var inputLength = $(this).val().length;
+          $(this)[0].setSelectionRange(inputLength, inputLength - 1);
 
           return false;
         },
