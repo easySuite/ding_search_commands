@@ -45,7 +45,7 @@ fieldset#ting-search-terms-fieldset .fieldset-wrapper {
   position: relative;
 }
 fieldset#ting-search-terms-fieldset .search-term-ops {
-  background: #E1E1E1;
+  background: #e1e1e1;
   max-width: 1180px;
   min-width: 100%;
   margin-left: -20px;
@@ -67,7 +67,7 @@ fieldset#ting-search-terms-fieldset .search-terms-more {
   padding-right: 14px;
 }
 fieldset#ting-search-terms-fieldset .search-terms-more a {
-  color: #4C4C4C;
+  color: #4c4c4c;
 }
 
 #ting-search-terms-container {
@@ -86,7 +86,7 @@ fieldset#ting-search-terms-fieldset .search-terms-more a {
 }
 #ting-search-terms-container ul li.search-term {
   border-bottom-style: solid;
-  border-bottom-color: #E1E1E1;
+  border-bottom-color: #e1e1e1;
   border-bottom-width: 1px;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -114,7 +114,7 @@ div.search #search-block-form .fieldset-wrapper #ting-search-terms-container {
   overflow-y: scroll;
   overflow-x: hidden;
   border-style: solid;
-  border-color: #E1E1E1;
+  border-color: #e1e1e1;
   border-width: 1px;
 }
 div.search #search-block-form .fieldset-wrapper #ting-search-terms-container ul {
@@ -142,7 +142,7 @@ div.search #ting-search-terms-fieldset .search-terms-more {
   padding-right: 14px;
 }
 div.search #ting-search-terms-fieldset .search-terms-more a {
-  color: #4C4C4C;
+  color: #4c4c4c;
 }
 
 @media only screen and (max-width: 768px) {
@@ -167,7 +167,7 @@ div.search #ting-search-terms-fieldset .search-terms-more a {
     height: 60px;
     border: solid;
     border-width: 1px;
-    color: #E1E1E1;
+    color: #e1e1e1;
   }
   fieldset#ting-search-terms-fieldset div .search-term-op {
     display: inline;
