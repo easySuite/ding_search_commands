@@ -100,4 +100,14 @@
       });
     }
   };
+
+function setInputPadding(){
+    $(document).ready(function() {
+      if($('#ting-search-terms-fieldset').length) {
+        $('div.form-type-textfield.form-item-search-block-form > input.auto-submit.form-autocomplete').addClass('input-limit');
+      }
+    })
+  }
+
+  setInputPadding();
 })(jQuery);
