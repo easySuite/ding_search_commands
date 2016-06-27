@@ -63,19 +63,29 @@
 
           return false;
         },
-/*        // Prevent value inserted on focus.
-        focus: function(event, ui) {
-          return false;
-        },*/
+        /*        // Prevent value inserted on focus.
+         focus: function(event, ui) {
+         return false;
+         },*/
         // Keep autocomplete open all the time.
         close: function (event, ui) {
           $(this).searchTerms("search", "");
         }
       })
-      // Display all items on fieldset expand.
-      .focus(function () {
-        $(this).searchTerms("search", "");
-      });
+        // Display all items on fieldset expand.
+        .focus(function () {
+          $(this).searchTerms("search", "");
+        });
     }
   };
+
+  function setInputPadding(){
+    $(document).ready(function() {
+      if($('#ting-search-terms-fieldset').length) {
+        $('div.form-type-textfield.form-item-search-block-form > input.auto-submit.form-autocomplete').addClass('input-limit');
+      }
+    })
+  }
+
+  setInputPadding();
 })(jQuery);
