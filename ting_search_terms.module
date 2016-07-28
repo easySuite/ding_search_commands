@@ -34,6 +34,7 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
       'js' => array(
         array(
           'data' => $path . '/js/ting_search_terms.js',
+          'scope' => 'footer',
         ),
         array(
           'data' => array(
