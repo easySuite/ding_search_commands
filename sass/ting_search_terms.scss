@@ -25,8 +25,12 @@ $green:                   #78a854;
 $zen-columns:             12;
 $zen-gutters:             20px;
 
+.form-autocomplete.input-limit {
+  padding-right: 280px;
+}
+
 fieldset#ting-search-terms-fieldset {
-  border: none!important;
+  border: none !important;
   position: relative;
   top: 23px;
   padding-right: 0px;
@@ -48,7 +52,7 @@ fieldset#ting-search-terms-fieldset {
   }
 
   .search-term-ops {
-    background: #E1E1E1;
+    background: #e1e1e1;
     max-width: 1180px;
     min-width: 100%;
     margin-left: -20px;
@@ -72,7 +76,7 @@ fieldset#ting-search-terms-fieldset {
     padding-right: 14px;
 
     a {
-      color: #4C4C4C;
+      color: #4c4c4c;
     }
   }
 }
@@ -88,11 +92,12 @@ fieldset#ting-search-terms-fieldset {
   margin-left: -20px;
 
   ul {
-    top: 0!important;
+    top: 0 !important;
+    z-index: 20 !important;
 
     li.search-term {
       border-bottom-style: solid;
-      border-bottom-color: #E1E1E1;
+      border-bottom-color: #e1e1e1;
       border-bottom-width: 1px;
       padding-bottom: 10px;
       padding-top: 10px;
@@ -129,12 +134,14 @@ div.search {
         overflow-y: scroll;
         overflow-x: hidden;
         border-style: solid;
-        border-color: #E1E1E1;
+        border-color: #e1e1e1;
         border-width: 1px;
 
         ul {
           max-width: 850px;
           min-width: 100%;
+          left: 0 !important;
+          z-index: 20 !important;
         }
       }
     }
@@ -146,7 +153,13 @@ div.search {
     }
 
     legend a {
-      color: #00b7e7;;
+      color: #00b7e7;
+    }
+
+    .search-term-ops {
+      border: solid;
+      border-width: 1px;
+      color: #e1e1e1;
     }
 
     div .search-term-op {
@@ -164,13 +177,17 @@ div.search {
       padding-right: 14px;
 
       a {
-        color: #4C4C4C;
+        color: #4c4c4c;
       }
     }
   }
 }
 
 @include small-medium() {
+  .form-autocomplete.input-limit {
+    padding-right: 167px;
+  }
+
   fieldset#ting-search-terms-fieldset {
     position: relative;
     padding: 0;
@@ -189,7 +206,7 @@ div.search {
       height: 60px;
       border: solid;
       border-width: 1px;
-      color: #E1E1E1;
+      color: #e1e1e1;
     }
 
     div .search-term-op {
@@ -197,8 +214,9 @@ div.search {
       padding-right: 5px;
       padding-left: 5px;
     }
+
     .search-terms-more {
-      display: block!important;
+      display: block !important;
       float: left;
       padding-left: 6px;
       margin-top: -32px;
@@ -213,10 +231,17 @@ div.search {
     min-width: 100%;
     margin: 0;
 
-    ul li.search-term {
-      max-width: 300px;
-      min-width: 100%;
-      top: 0!important;
+    ul {
+      z-index: 20 !important;
+      display: block !important;
+      height: 200px;
+      left: 0 !important;
+
+      li.search-term {
+        max-width: 300px;
+        min-width: 100%;
+        top: 0 !important;
+      }
     }
   }
 
@@ -232,6 +257,15 @@ div.search {
       .search-terms-more {
         float: left;
       }
+    }
+  }
+  
+  #ting-search-terms-container {
+    ul {
+      z-index: 20 !important;
+      display: block !important;
+      height: 200px;
+      left: 0 !important;
     }
   }
 }

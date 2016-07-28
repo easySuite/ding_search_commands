@@ -21,6 +21,10 @@
    ========================================================================== */
 /* Colors variables
    ========================================================================== */
+.form-autocomplete.input-limit {
+  padding-right: 280px;
+}
+
 fieldset#ting-search-terms-fieldset {
   border: none !important;
   position: relative;
@@ -41,7 +45,7 @@ fieldset#ting-search-terms-fieldset .fieldset-wrapper {
   position: relative;
 }
 fieldset#ting-search-terms-fieldset .search-term-ops {
-  background: #E1E1E1;
+  background: #e1e1e1;
   max-width: 1180px;
   min-width: 100%;
   margin-left: -20px;
@@ -63,7 +67,7 @@ fieldset#ting-search-terms-fieldset .search-terms-more {
   padding-right: 14px;
 }
 fieldset#ting-search-terms-fieldset .search-terms-more a {
-  color: #4C4C4C;
+  color: #4c4c4c;
 }
 
 #ting-search-terms-container {
@@ -78,10 +82,11 @@ fieldset#ting-search-terms-fieldset .search-terms-more a {
 }
 #ting-search-terms-container ul {
   top: 0 !important;
+  z-index: 20 !important;
 }
 #ting-search-terms-container ul li.search-term {
   border-bottom-style: solid;
-  border-bottom-color: #E1E1E1;
+  border-bottom-color: #e1e1e1;
   border-bottom-width: 1px;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -109,18 +114,25 @@ div.search #search-block-form .fieldset-wrapper #ting-search-terms-container {
   overflow-y: scroll;
   overflow-x: hidden;
   border-style: solid;
-  border-color: #E1E1E1;
+  border-color: #e1e1e1;
   border-width: 1px;
 }
 div.search #search-block-form .fieldset-wrapper #ting-search-terms-container ul {
   max-width: 850px;
   min-width: 100%;
+  left: 0 !important;
+  z-index: 20 !important;
 }
 div.search #ting-search-terms-fieldset .search-term-ops {
   max-width: 850px;
 }
 div.search #ting-search-terms-fieldset legend a {
   color: #00b7e7;
+}
+div.search #ting-search-terms-fieldset .search-term-ops {
+  border: solid;
+  border-width: 1px;
+  color: #e1e1e1;
 }
 div.search #ting-search-terms-fieldset div .search-term-op {
   display: inline;
@@ -136,10 +148,14 @@ div.search #ting-search-terms-fieldset .search-terms-more {
   padding-right: 14px;
 }
 div.search #ting-search-terms-fieldset .search-terms-more a {
-  color: #4C4C4C;
+  color: #4c4c4c;
 }
 
 @media only screen and (max-width: 768px) {
+  .form-autocomplete.input-limit {
+    padding-right: 167px;
+  }
+
   fieldset#ting-search-terms-fieldset {
     position: relative;
     padding: 0;
@@ -157,7 +173,7 @@ div.search #ting-search-terms-fieldset .search-terms-more a {
     height: 60px;
     border: solid;
     border-width: 1px;
-    color: #E1E1E1;
+    color: #e1e1e1;
   }
   fieldset#ting-search-terms-fieldset div .search-term-op {
     display: inline;
@@ -179,6 +195,12 @@ div.search #ting-search-terms-fieldset .search-terms-more a {
     min-width: 100%;
     margin: 0;
   }
+  #ting-search-terms-container ul {
+    z-index: 20 !important;
+    display: block !important;
+    height: 200px;
+    left: 0 !important;
+  }
   #ting-search-terms-container ul li.search-term {
     max-width: 300px;
     min-width: 100%;
@@ -195,5 +217,12 @@ div.search #ting-search-terms-fieldset .search-terms-more a {
   }
   div.search fieldset#ting-search-terms-fieldset .search-terms-more {
     float: left;
+  }
+
+  #ting-search-terms-container ul {
+    z-index: 20 !important;
+    display: block !important;
+    height: 200px;
+    left: 0 !important;
   }
 }
