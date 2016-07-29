@@ -18,7 +18,7 @@
       var $searchField = $('input[name=search_block_form]');
 
       // Append logical operation to the search field input.
-      $('.search-term-op').on('click', function (event) {
+      $('.search-term-op', context).on('click', function (event) {
         if (getLastTerm($searchField.val())) {
           $searchField.val($searchField.val() + ' ' + $(this).text() + ' ');
         }
@@ -26,7 +26,7 @@
       });
 
       // Move focus on textfield on fieldset link click.
-      $('#ting-search-terms-fieldset').find('.fieldset-title').on('click', function (event) {
+      $('#ting-search-terms-fieldset', context).on('mouseup', '.fieldset-title',function (event) {
         if (!$searchField.hasClass('collapsed')) {
           $searchField.focus();
         }
