@@ -26,7 +26,7 @@
       });
 
       // Move focus on textfield on fieldset link click.
-      $('#ting-search-terms-fieldset', context).on('mouseup', '.fieldset-title',function (event) {
+      $('#ting-search-terms-fieldset', context).on('mouseup', '.fieldset-title', function (event) {
         if (!$searchField.hasClass('collapsed')) {
           $searchField.focus();
         }
