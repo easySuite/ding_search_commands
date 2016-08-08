@@ -83,6 +83,7 @@ fieldset#ting-search-terms-fieldset .search-terms-more a {
 #ting-search-terms-container ul {
   top: 0 !important;
   z-index: 20 !important;
+  left: 0 !important;
 }
 #ting-search-terms-container ul li.search-term {
   border-bottom-style: solid;
