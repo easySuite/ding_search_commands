@@ -90,6 +90,14 @@ function _ting_search_terms_get_terms() {
     $service_url = variable_get('ting_search_url', '');
     $service_url .= 'opensearch_cql.xml';
 
+    // Fetching status of opensearch CQL indexes.
+    $status = drupal_http_request($service_url);
+
+    if ($status->code != '200') {
+      // Hardcoding fallback opensearch cql indexes url to v4.0.1.
+      $service_url = 'http://opensearch.addi.dk/4.0.1/opensearch_cql.xml';
+    }
+
     $data = file_get_contents($service_url);
     if ($data) {
       $xml = new \SimpleXMLElement($data);
