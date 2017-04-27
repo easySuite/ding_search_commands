@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Perform default functionality on module install/uninstall.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ting_search_terms_install() {
+  ting_search_terms_create_info_page();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function ting_search_terms_uninstall() {
+  $nid = variable_get('ting_search_terms_page', FALSE);
+  if ($nid) {
+    node_delete($nid);
+    variable_del('ting_search_terms_page');
+  }
+}
+
+/**
+ * Create search terms info page and save its id as variable.
+ */
+function ting_search_terms_create_info_page() {
+  $node = new stdClass();
+  $node->title = 'Ting Search Terms';
+  $node->type = 'ding_page';
+  $node->language = LANGUAGE_NONE;
+  $node->uid = 1;
+  $node->status = 1;
+
+  node_save($node);
+  variable_set('ting_search_terms_page', $node->nid);
+}
