@@ -1,5 +1,4 @@
 Ting search terms.
-==========
 
 Gives user possibility to select search terms in search field.
 
