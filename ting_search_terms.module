@@ -80,7 +80,9 @@ function ting_search_terms_preprocess_search_terms_fieldset(&$variables) {
  *   Term keys with their description.
  */
 function _ting_search_terms_get_terms() {
-  $cid = 'ting_search_terms';
+  global $language;
+
+  $cid = 'ting_search_terms_' . $language->language;
   $options = array();
 
   if ($cache = cache_get($cid)) {
@@ -106,16 +108,12 @@ function _ting_search_terms_get_terms() {
         $set = (string) $index->map->name['set'];
         if ($set == 'term') {
           $titles = $index->title;
-          $description = '';
-          foreach ($titles as $title) {
-            $lang = (string) $title['lang'];
-            if ($lang == 'en') {
-              $description = (string) $title;
-            }
-          }
 
           $name = (string) $index->map->name;
           $key = $set . '.' . $name;
+
+          $lang = ($language->language == 'da') ? 0 : 1;
+          $description = (string) $titles[$lang];
 
           // The key 'value' is mandatory for the jquery ui autocomplete library.
           $options[] = array('value' => $key, 'description' => $description);
