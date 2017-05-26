@@ -33,25 +33,10 @@ html.js fieldset.collapsible .fieldset-legend {
   background: none;
 }
 
-.search {
+#search-block-form {
   .form-actions {
-    > a {
-      @include min-height(60px);
-      display: inline-block;
-      margin: -2px 10px 0 0;
-      line-height: 60px;
-
-      // Media from-medium
-
-      @include from-medium() {
-        background-color: transparent;
-        color: $darker-gray;
-        text-decoration: underline;
-      }
-
-      // Media till-medium
-
-      @include medium() {
+    a.fieldset-title {
+      @include  small-medium() {
         display: none;
       }
     }
