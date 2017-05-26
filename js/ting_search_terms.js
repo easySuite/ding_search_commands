@@ -109,5 +109,10 @@ function setInputPadding(){
     })
   }
 
+  $(function () {
+    // Extended search button location.
+    $('.search .collapsible .fieldset-legend > a').insertBefore('.search .form-submit');
+  });
+
   setInputPadding();
 })(jQuery);
