@@ -29,17 +29,45 @@ $zen-gutters:             20px;
   padding-right: 280px;
 }
 
+html.js fieldset.collapsible .fieldset-legend {
+  background: none;
+}
+
+.form-actions {
+  > a {
+    @include min-height(60px);
+    display: inline-block;
+    margin: -2px 10px 0 0;
+    line-height: 60px;
+
+    // Media from-medium
+
+    @include from-medium() {
+      background-color: transparent;
+      color: $darker-gray;
+      text-decoration: underline;
+    }
+
+    // Media till-medium
+
+    @include medium() {
+      display: none;
+    }
+  }
+}
+
 fieldset#ting-search-terms-fieldset {
   border: none !important;
   position: relative;
-  top: 23px;
-  padding-right: 0px;
+  top: 1px;
+  padding: 0;
+  margin-bottom: 0;
 
   legend {
     position: absolute;
     top: -65px;
     right: 155px;
-    padding: 0;
+    padding: 23px 0;
     margin: 0;
 
     a {
@@ -53,11 +81,7 @@ fieldset#ting-search-terms-fieldset {
 
   .search-term-ops {
     background: #e1e1e1;
-    max-width: 1180px;
-    min-width: 100%;
-    margin-left: -20px;
-    height: 30px;
-    padding-top: 10px;
+    padding: 10px 0;
   }
 
   div .search-term-op {
@@ -81,17 +105,23 @@ fieldset#ting-search-terms-fieldset {
   }
 }
 
+.search {
+  .form-actions {
+
+    > a {
+    padding-right: 10px;
+    }
+  }
+}
+
 #ting-search-terms-container {
-  height: 500px;
-  max-width: 1180px;
-  min-width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   background: $white;
-  margin-top: -34px;
-  margin-left: -20px;
+  border-radius: 12px 12px 0 0;
 
   ul {
+    max-height: 500px;
+    overflow-y:auto;
     top: 0 !important;
     z-index: 20 !important;
     left: 0 !important;
@@ -106,6 +136,10 @@ fieldset#ting-search-terms-fieldset {
     
     li.search-term:hover {
       background:  #ededed;
+    }
+
+    @include small(){
+      overflow-y: visible;
     }
   }
 
@@ -184,7 +218,7 @@ div.search {
   }
 }
 
-@include small-medium() {
+@include small() {
   .form-autocomplete.input-limit {
     padding-right: 167px;
   }
@@ -192,11 +226,13 @@ div.search {
   fieldset#ting-search-terms-fieldset {
     position: relative;
     padding: 0;
+    margin-bottom: 0;
 
     legend {
       position: absolute;
       top: -123px;
       right: 20px;
+      padding-top: 0;
     }
 
     .search-term-ops {
@@ -229,7 +265,6 @@ div.search {
     max-width: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
-    min-width: 100%;
     margin: 0;
 
     ul {
@@ -260,13 +295,17 @@ div.search {
       }
     }
   }
-  
-  #ting-search-terms-container {
-    ul {
-      z-index: 20 !important;
-      display: block !important;
-      height: 200px;
-      left: 0 !important;
+}
+
+@include medium() {
+  fieldset#ting-search-terms-fieldset {
+    margin-bottom: 0;
+
+    legend {
+      position: absolute;
+      top: -118px;
+      right: 20px;
+      padding-top: 0;
     }
   }
 }
