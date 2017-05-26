@@ -29,7 +29,7 @@ html.js fieldset.collapsible .fieldset-legend {
   background: none;
 }
 
-.form-actions > a {
+.search .form-actions > a {
   min-height: 60px;
   height: auto !important;
   height: 60px;
@@ -38,14 +38,14 @@ html.js fieldset.collapsible .fieldset-legend {
   line-height: 60px;
 }
 @media only screen and (min-width: 769px) {
-  .form-actions > a {
+  .search .form-actions > a {
     background-color: transparent;
     color: #333;
     text-decoration: underline;
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .form-actions > a {
+  .search .form-actions > a {
     display: none;
   }
 }
