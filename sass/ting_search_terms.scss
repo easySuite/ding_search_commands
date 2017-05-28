@@ -33,6 +33,14 @@ html.js fieldset.collapsible .fieldset-legend {
   background: none;
 }
 
+.page-search {
+  .search {
+    .form-actions a.fieldset-title {
+        display: none;
+    }
+  }
+}
+
 #search-block-form {
   .form-actions {
     a.fieldset-title {
