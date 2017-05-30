@@ -2,5 +2,5 @@ name = Ting search terms.
 description = Search ting objects by terms.
 core = 7.x
 package = easyOPAC
-version = 7.x-3.0.3
+version = 7.x-3.0.4
 dependencies[] = ding_page
