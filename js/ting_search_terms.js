@@ -25,6 +25,9 @@
         $searchField.focus();
       });
 
+      $('#ting-search-terms-fieldset a.fieldset-title').addClass( "search-term" );
+
+
       // Move focus on textfield on fieldset link click.
       $('#ting-search-terms-fieldset', context).on('mouseup', '.fieldset-title', function (event) {
         if (!$searchField.hasClass('collapsed')) {
@@ -101,13 +104,39 @@
     }
   };
 
-function setInputPadding(){
+  function setInputPadding(){
     $(document).ready(function() {
       if($('#ting-search-terms-fieldset').length) {
         $('div.form-type-textfield.form-item-search-block-form > input.auto-submit.form-autocomplete').addClass('input-limit');
       }
     })
   }
+
+  $(function () {
+    // Extended search button location.
+   $('.search .collapsible a.search-term').insertBefore('.site-header .search .form-submit');
+
+    var linkIsClicked = false;
+    $('input.auto-submit').focus(function() {
+      $('a.search-term').css('visibility', 'visible');
+    });
+
+    $('.form-actions a.search-term').mousedown(function() {
+      // $('input.auto-submit').focus();
+      linkIsClicked = true;
+    });
+
+    $('input.auto-submit').on('blur', function(event) {
+      if(linkIsClicked) {
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        $('input.auto-submit').focus();
+        linkIsClicked = false;
+        return false;
+      }
+      $('a.search-term').css('visibility', 'hidden');
+    });
+  });
 
   setInputPadding();
 })(jQuery);

@@ -25,14 +25,126 @@ $green:                   #78a854;
 $zen-columns:             12;
 $zen-gutters:             20px;
 
-.form-autocomplete.input-limit {
+.ding2-site-template {
+  .site-header {
+    .header-inner {
+      .pane-search-form .form-actions a.search-term {
+        position: absolute;
+        right: 60px;
+        text-align: right;
+        padding-right: 15px;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+/*.form-autocomplete.input-limit {
   padding-right: 280px;
+}*/
+
+
+.search {
+  position: relative;
+
+  // Collapse button
+
+  .form-actions {
+
+    > a {
+      @include min-height(60px);
+      display: inline-block;
+      margin: -2px 10px 0 0;
+      line-height: 60px;
+
+      // Media from-medium
+
+      @include from-medium() {
+        background-color: transparent;
+        color: $darker-gray;
+        text-decoration: underline;
+      }
+
+      // Media till-medium
+
+      @include till-medium() {
+        display: none;
+      }
+    }
+  }
+
+  .collapsible {
+    /*@include zen-grid-container();
+    margin-bottom: 0;*/ 
+    max-width: 660px;
+    margin-left: -400px;
+    background-color: $white;
+
+   /* &#edit-advanced {
+      padding: 10px;
+    }*/
+
+    &.collapsed {
+      padding: 0;
+      height: 0;
+      border: 0;
+    }
+
+    legend {
+      display: none;
+    }
+
+    .description {
+      display: none;
+    }
+
+    .fieldset-wrapper{
+      float: inherit;
+
+      > .form-item {
+        margin-bottom: 10px;
+
+        // Media from-medium
+
+        @include from-medium() {
+          $gutter-width: .5em !global;
+          @include span(1 of 2);
+
+          &:nth-of-type(2n + 2) {
+            @include omega;
+          }
+        }
+      }
+    }
+
+    // Inputs styles
+
+    input {
+      background-color: $light-gray;
+      padding-right: 8px;
+      padding-left: 8px;
+      border: 1px solid $gray;
+    }
+
+    input,
+    .select-wrapper {
+      border-radius: 0;
+      width: 100%;
+    }
+
+    // Labels
+
+    label {
+      color: $black;
+      font-weight: 700;
+    }
+  }
 }
 
 fieldset#ting-search-terms-fieldset {
   border: none !important;
   position: relative;
-  top: 23px;
+  top: 0;
   padding-right: 0px;
 
   legend {
@@ -49,13 +161,14 @@ fieldset#ting-search-terms-fieldset {
 
   .fieldset-wrapper{
     position: relative;
+    overflow: visibility !important;
   }
 
   .search-term-ops {
     background: #e1e1e1;
     max-width: 1180px;
     min-width: 100%;
-    margin-left: -20px;
+    //margin-left: -20px;
     height: 30px;
     padding-top: 10px;
   }
@@ -71,7 +184,7 @@ fieldset#ting-search-terms-fieldset {
 
   .search-terms-more {
     float: right;
-    margin-top: -32px;
+    margin-top: -22px;
     font-style: italic;
     padding-right: 14px;
 
@@ -88,13 +201,16 @@ fieldset#ting-search-terms-fieldset {
   overflow-y: scroll;
   overflow-x: hidden;
   background: $white;
-  margin-top: -34px;
-  margin-left: -20px;
+  margin-top: -10px;
+  margin-left: -5px;
 
   ul {
     top: 0 !important;
     z-index: 20 !important;
     left: 0 !important;
+    margin-bottom: 0;
+    margin-right: 0;
+    min-width: 650px;
 
     li.search-term {
       border-bottom-style: solid;
@@ -102,6 +218,7 @@ fieldset#ting-search-terms-fieldset {
       border-bottom-width: 1px;
       padding-bottom: 10px;
       padding-top: 10px;
+      list-style: none;
     }
     
     li.search-term:hover {
@@ -184,6 +301,10 @@ div.search {
   }
 }
 
+.search fieldset.collapsible {
+  padding: 0;
+}
+
 @include small-medium() {
   .form-autocomplete.input-limit {
     padding-right: 167px;
@@ -192,6 +313,11 @@ div.search {
   fieldset#ting-search-terms-fieldset {
     position: relative;
     padding: 0;
+
+    &.collapsible {
+     padding-top: 0;
+     padding-bottom: 0;
+    }
 
     legend {
       position: absolute;
@@ -220,7 +346,7 @@ div.search {
       display: block !important;
       float: left;
       padding-left: 6px;
-      margin-top: -32px;
+      margin-top: -22px;
     }
   }
 
@@ -248,7 +374,8 @@ div.search {
 
   div.search {
     fieldset#ting-search-terms-fieldset {
-      padding-bottom: 20px;
+      padding-bottom: 0;
+      padding-top: 0;
       .search-term-ops {
         margin-top: -5px;
         margin-left: 0;
