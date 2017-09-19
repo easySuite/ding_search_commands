@@ -25,6 +25,8 @@ $green:                   #78a854;
 $zen-columns:             12;
 $zen-gutters:             20px;
 
+$tablet: "(max-width: 1024px)";
+
 .ding2-site-template {
   .site-header {
     .header-inner {
@@ -34,6 +36,10 @@ $zen-gutters:             20px;
         text-align: right;
         padding-right: 15px;
         visibility: hidden;
+
+        @media #{$tablet} {
+        right: 40px;
+        }
       }
     }
   }
@@ -74,6 +80,11 @@ $zen-gutters:             20px;
     max-width: 660px;
     margin-left: -400px;
     background-color: $white;
+
+    @media #{$tablet} {
+      max-width: 540px;
+      margin-left: -326px;
+    }
 
     &.collapsed {
       padding: 0;
@@ -132,6 +143,28 @@ $zen-gutters:             20px;
   }
 }
 
+html.js fieldset.collapsible .fieldset-legend {
+  background: none;
+}
+
+.page-search {
+  .search {
+    .form-actions a.fieldset-title {
+        display: none;
+    }
+  }
+}
+
+#search-block-form {
+  .form-actions {
+    a.fieldset-title {
+      @include  small-medium() {
+        display: none;
+      }
+    }
+  }
+}
+
 fieldset#ting-search-terms-fieldset {
   border: none !important;
   position: relative;
@@ -142,7 +175,7 @@ fieldset#ting-search-terms-fieldset {
     position: absolute;
     top: -65px;
     right: 155px;
-    padding: 0;
+    padding: 23px 0;
     margin: 0;
 
     a {
@@ -159,7 +192,6 @@ fieldset#ting-search-terms-fieldset {
     background: #e1e1e1;
     max-width: 1180px;
     min-width: 100%;
-    //margin-left: -20px;
     height: 30px;
     padding-top: 10px;
   }
@@ -185,23 +217,34 @@ fieldset#ting-search-terms-fieldset {
   }
 }
 
+.search {
+  .form-actions {
+
+    > a {
+    padding-right: 10px;
+    }
+  }
+}
+
 #ting-search-terms-container {
-  height: 500px;
-  max-width: 1180px;
-  min-width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   background: $white;
   margin-top: -10px;
   margin-left: -5px;
 
   ul {
+    max-height: 500px;
+    overflow-y:auto;
     top: 0 !important;
     z-index: 20 !important;
     left: 0 !important;
     margin-bottom: 0;
     margin-right: 0;
     min-width: 650px;
+
+    @media #{$tablet} {
+      max-width: 540px;
+    }
 
     li.search-term {
       border-bottom-style: solid;
@@ -214,6 +257,10 @@ fieldset#ting-search-terms-fieldset {
     
     li.search-term:hover {
       background:  #ededed;
+    }
+
+    @include small(){
+      overflow-y: visible;
     }
   }
 
@@ -304,6 +351,7 @@ div.search {
   fieldset#ting-search-terms-fieldset {
     position: relative;
     padding: 0;
+    margin-bottom: 0;
 
     &.collapsible {
      padding-top: 0;
@@ -314,6 +362,7 @@ div.search {
       position: absolute;
       top: -123px;
       right: 20px;
+      padding-top: 0;
     }
 
     .search-term-ops {
@@ -346,7 +395,6 @@ div.search {
     max-width: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
-    min-width: 100%;
     margin: 0;
 
     ul {
@@ -378,13 +426,17 @@ div.search {
       }
     }
   }
-  
-  #ting-search-terms-container {
-    ul {
-      z-index: 20 !important;
-      display: block !important;
-      height: 200px;
-      left: 0 !important;
+}
+
+@include medium() {
+  fieldset#ting-search-terms-fieldset {
+    margin-bottom: 0;
+
+    legend {
+      position: absolute;
+      top: -118px;
+      right: 20px;
+      padding-top: 0;
     }
   }
 }
