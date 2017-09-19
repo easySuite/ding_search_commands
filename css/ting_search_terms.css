@@ -29,9 +29,6 @@
   visibility: hidden;
 }
 
-/*.form-autocomplete.input-limit {
-  padding-right: 280px;
-}*/
 .search {
   position: relative;
 }
@@ -61,9 +58,6 @@
   max-width: 660px;
   margin-left: -400px;
   background-color: #fff;
-  /* &#edit-advanced {
-     padding: 10px;
-   }*/
 }
 .search .collapsible.collapsed {
   padding: 0;
@@ -323,4 +317,8 @@ div.search #ting-search-terms-fieldset .search-terms-more a {
     height: 200px;
     left: 0 !important;
   }
+}
+.page-search .search .form-actions .fieldset-title.search-term,
+.page-search .search #ting-search-terms-fieldset {
+  display: none;
 }
