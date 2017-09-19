@@ -39,11 +39,6 @@ $zen-gutters:             20px;
   }
 }
 
-/*.form-autocomplete.input-limit {
-  padding-right: 280px;
-}*/
-
-
 .search {
   position: relative;
 
@@ -79,10 +74,6 @@ $zen-gutters:             20px;
     max-width: 660px;
     margin-left: -400px;
     background-color: $white;
-
-   /* &#edit-advanced {
-      padding: 10px;
-    }*/
 
     &.collapsed {
       padding: 0;
@@ -396,4 +387,16 @@ div.search {
       left: 0 !important;
     }
   }
+}
+
+
+// Page search
+
+.page-search {
+  .search {
+    .form-actions .fieldset-title.search-term,
+    #ting-search-terms-fieldset {
+      display: none;
+    }
+  } 
 }
