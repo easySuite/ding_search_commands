@@ -25,6 +25,9 @@
         $searchField.focus();
       });
 
+      $('#ting-search-terms-fieldset a.fieldset-title').addClass( "search-term" );
+
+
       // Move focus on textfield on fieldset link click.
       $('#ting-search-terms-fieldset', context).on('mouseup', '.fieldset-title', function (event) {
         if (!$searchField.hasClass('collapsed')) {
@@ -101,7 +104,7 @@
     }
   };
 
-function setInputPadding(){
+  function setInputPadding(){
     $(document).ready(function() {
       if($('#ting-search-terms-fieldset').length) {
         $('div.form-type-textfield.form-item-search-block-form > input.auto-submit.form-autocomplete').addClass('input-limit');
@@ -111,7 +114,36 @@ function setInputPadding(){
 
   $(function () {
     // Extended search button location.
-    $('.search .collapsible .fieldset-legend > a').insertBefore('.search .form-submit');
+   $('.search .collapsible a.search-term').insertBefore('.site-header .search .form-submit');
+
+    var openedLink = null;
+    $('input.auto-submit').mousedown(function() {
+      $('input.auto-submit').addClass('extended');
+      $('a.search-term').css('visibility', 'visible');
+    });
+
+    $('.form-actions a.search-term').click(function(event) {
+      if($(event.target).hasClass('opened')) {
+        openedLink = null;
+        $('.form-actions a.search-term').removeClass('opened');
+        return;
+      }
+
+      $('.form-actions a.search-term').removeClass('opened');
+      openedLink = $(event.target);
+      openedLink.addClass('opened');
+    });
+
+    $(document).click(function(e) { 
+      var $target = $(e.target);
+      e.preventDefault();
+
+      if(!openedLink && !$target.hasClass('auto-submit') && !$('a.fieldset-title.opened').length)  {
+        $('a.search-term').css('visibility', 'hidden');
+        $('input.auto-submit').removeClass('extended');
+        return;
+      }
+    });
   });
 
   setInputPadding();
