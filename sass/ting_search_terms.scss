@@ -30,12 +30,13 @@ $tablet: "(max-width: 1024px)";
 .ding2-site-template {
   .site-header {
     .header-inner {
-      .pane-search-form .form-actions a.search-term {
+      .pane-search-form .form-actions a.fieldset-title {
         position: absolute;
         right: 60px;
         text-align: right;
         padding-right: 15px;
-        visibility: hidden;
+        //visibility: hidden;
+        //display: none;
 
         @media #{$tablet} {
         right: 40px;
@@ -112,7 +113,7 @@ $tablet: "(max-width: 1024px)";
           $gutter-width: .5em !global;
           @include span(1 of 2);
 
-          &:nth-of-type(2n + 2) {
+          &:nth-of-type(2n   2) {
             @include omega;
           }
         }
@@ -240,7 +241,7 @@ fieldset#ting-search-terms-fieldset {
     left: 0 !important;
     margin-bottom: 0;
     margin-right: 0;
-    min-width: 650px;
+    min-width: 665px;
 
     @media #{$tablet} {
       max-width: 540px;
@@ -451,4 +452,12 @@ div.search {
       display: none;
     }
   } 
+}
+
+.unset-focus {
+  width: 309% !important;
+
+  &:focus {
+    content: 'none';
+  }
 }

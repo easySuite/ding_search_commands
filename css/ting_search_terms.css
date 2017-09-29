@@ -21,15 +21,14 @@
    ========================================================================== */
 /* Colors variables
    ========================================================================== */
-.ding2-site-template .site-header .header-inner .pane-search-form .form-actions a.search-term {
+.ding2-site-template .site-header .header-inner .pane-search-form .form-actions a.fieldset-title {
   position: absolute;
   right: 60px;
   text-align: right;
   padding-right: 15px;
-  visibility: hidden;
 }
 @media (max-width: 1024px) {
-  .ding2-site-template .site-header .header-inner .pane-search-form .form-actions a.search-term {
+  .ding2-site-template .site-header .header-inner .pane-search-form .form-actions a.fieldset-title {
     right: 40px;
   }
 }
@@ -93,7 +92,7 @@
     float: left;
     margin-right: 11.11111%;
   }
-  .search .collapsible .fieldset-wrapper > .form-item:nth-of-type(2n + 2) {
+  .search .collapsible .fieldset-wrapper > .form-item:nth-of-type(2n   2) {
     float: right;
     margin-right: 0;
   }
@@ -191,7 +190,7 @@ fieldset#ting-search-terms-fieldset .search-terms-more a {
   left: 0 !important;
   margin-bottom: 0;
   margin-right: 0;
-  min-width: 650px;
+  min-width: 665px;
 }
 @media (max-width: 1024px) {
   #ting-search-terms-container ul {
@@ -363,4 +362,11 @@ div.search #ting-search-terms-fieldset .search-terms-more a {
 .page-search .search .form-actions .fieldset-title.search-term,
 .page-search .search #ting-search-terms-fieldset {
   display: none;
+}
+
+.unset-focus {
+  width: 309% !important;
+}
+.unset-focus:focus {
+  content: 'none';
 }
