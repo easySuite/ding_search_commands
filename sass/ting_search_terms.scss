@@ -34,7 +34,7 @@ $tablet: "(max-width: 1024px)";
         position: absolute;
         right: 60px;
         text-align: right;
-        padding-right: 15;
+        padding-right: 15px;
 
         @media #{$tablet} {
         right: 40px;
