@@ -106,45 +106,75 @@
 
   function setInputPadding(){
     $(document).ready(function() {
+   
       if($('#ting-search-terms-fieldset').length) {
         $('div.form-type-textfield.form-item-search-block-form > input.auto-submit.form-autocomplete').addClass('input-limit');
       }
     })
   }
 
-  $(function () {
-    // Extended search button location.
+  $(document).ready(function() {
+    // Define variables.
    $('.search .collapsible a.search-term').insertBefore('.site-header .search .form-submit');
 
-    var openedLink = null;
-    $('input.auto-submit').mousedown(function() {
-      $('input.auto-submit').addClass('extended');
-      $('a.search-term').css('visibility', 'visible');
-    });
+    var search_input = $('.form-item-search-block-form input[name=search_block_form]', document);
+    var term_link = $('#search-block-form a.fieldset-title', document);
+    var filters_block = $('fieldset#ting-search-terms-fieldset');
 
-    $('.form-actions a.search-term').click(function(event) {
-      if($(event.target).hasClass('opened')) {
-        openedLink = null;
-        $('.form-actions a.search-term').removeClass('opened');
-        return;
+    // Default states.
+    term_link.addClass('closed');
+    search_input.focus();
+
+      if (search_input.is(':focus')) {
+        search_input.addClass('unset-focus');
+        term_link.css('display', 'block');
+
+        // Don't display filters box on page load on search results page.
+        if ($(document).find('body').hasClass('page-search')) {
+          term_link.css('display', 'none');
+        }
+
+        // If filters block is visible, disable core :focus action and add classes
+        // to "Advanced search" link.
+        if (filters_block.is(':visible')) {
+          search_input.addClass('unset-focus');
+          term_link.removeClass('closed');
+          term_link.addClass('opened');
+        }
+
+        // Handling "Advanced search" link click event.
+          term_link.on('click', function () {
+          // Toggling classes attached to "Advanced search" link.
+          $(this).toggleClass('opened closed');
+          if ($(this).hasClass('opened')) {
+            // Unsetting core :focus event in order to keep search input expanded
+            // state.
+            search_input.addClass('unset-focus');
+          }
+          else {
+            // Clear classes which are rewriting core behavior.
+            search_input.removeClass('unset-focus');
+            term_link.hide();
+          }
+        });
+
+        // Handling search input state when link is already visible.
+        if (term_link.is(':visible')) {
+          search_input.addClass('unset-focus');
+        }
+
+        // Tracking search input changes on click action.
+        search_input.on('click', function () {
+          search_input.trigger('widthChanged');
+        });
+
+        // Binding trigger which will track search input changes.
+        search_input.bind('widthChanged', function () {
+          search_input.addClass('unset-focus');
+          term_link.show();
+        });
       }
-
-      $('.form-actions a.search-term').removeClass('opened');
-      openedLink = $(event.target);
-      openedLink.addClass('opened');
     });
-
-    $(document).click(function(e) { 
-      var $target = $(e.target);
-      e.preventDefault();
-
-      if(!openedLink && !$target.hasClass('auto-submit') && !$('a.fieldset-title.opened').length)  {
-        $('a.search-term').css('visibility', 'hidden');
-        $('input.auto-submit').removeClass('extended');
-        return;
-      }
-    });
-  });
 
   setInputPadding();
 })(jQuery);
