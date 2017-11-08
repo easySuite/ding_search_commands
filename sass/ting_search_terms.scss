@@ -1,6 +1,5 @@
-@import "_mixins";
+@import "../../../themes/ddbasic/sass/_base.scss";
 @import "susy";
-@import "zen-grids";
 
 /* Colors variables
    ========================================================================== */
@@ -22,11 +21,6 @@ $marine:                  #47cfd1;
 $yellow:                  #eae328;
 $green:                   #78a854;
 
-$zen-columns:             12;
-$zen-gutters:             20px;
-
-$tablet: "(max-width: 1024px)";
-
 .pane-search-form {
   position: relative;
 
@@ -44,28 +38,28 @@ $tablet: "(max-width: 1024px)";
       > a {
         float: left;
         padding-right: 10px;
-        @include min-height(60px);
+        min-height: 60px;
         display: inline-block;
         margin: -2px 10px 0 0;
         line-height: 60px;
 
-        // Media from-medium
-        @include from-medium() {
+        // Tablet mode
+        @include media($tablet) {
           background-color: transparent;
           color: $darker-gray;
           text-decoration: underline;
         }
 
-        // Media till-medium
-        @include till-medium() {
+        // Media mobile
+        @include media($mobile) {
           display: none;
         }
         .fieldset-title {
           float: left;
-          @media #{$tablet} {
+          @include media($tablet) {
             right: 40px;
           }
-          @include  small-medium() {
+          @include media($mobile) {
             display: none;
           }
         }
@@ -134,7 +128,7 @@ $tablet: "(max-width: 1024px)";
             background:  #ededed;
           }
 
-          @include small(){
+          @include media($mobile) {
             overflow-y: visible;
           }
         }
