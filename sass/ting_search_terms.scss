@@ -1,6 +1,5 @@
-@import "_mixins";
+@import "../../../themes/ddbasic/sass/_base.scss";
 @import "susy";
-@import "zen-grids";
 
 /* Colors variables
    ========================================================================== */
@@ -22,440 +21,149 @@ $marine:                  #47cfd1;
 $yellow:                  #eae328;
 $green:                   #78a854;
 
-$zen-columns:             12;
-$zen-gutters:             20px;
-
-$tablet: "(max-width: 1024px)";
-
-.ding2-site-template {
-  .site-header {
-    .header-inner {
-      .pane-search-form .form-actions a.fieldset-title {
-        position: absolute;
-        right: 60px;
-        text-align: right;
-        padding-right: 15px;
-
-        @media #{$tablet} {
-        right: 40px;
-        }
-      }
-    }
-  }
-}
-
-.search {
+.pane-search-form {
   position: relative;
 
-  // Collapse button
-
-  .form-actions {
-
-    > a {
-      @include min-height(60px);
-      display: inline-block;
-      margin: -2px 10px 0 0;
-      line-height: 60px;
-
-      // Media from-medium
-
-      @include from-medium() {
-        background-color: transparent;
-        color: $darker-gray;
-        text-decoration: underline;
-      }
-
-      // Media till-medium
-
-      @include till-medium() {
-        display: none;
-      }
-    }
-  }
-
-  .collapsible {
-    /*@include zen-grid-container();
-    margin-bottom: 0;*/ 
-    max-width: 660px;
-    margin-left: -400px;
-    background-color: $white;
-
-    @media #{$tablet} {
-      max-width: 540px;
-      margin-left: -326px;
+  #search-block-form {
+    .form-item-search-block-form {
+      width: 75%;
     }
 
-    &.collapsed {
-      padding: 0;
-      height: 0;
-      border: 0;
-    }
+    .form-actions {
+      float: left;
+      position: absolute;
+      width: auto;
+      right: 20%;
 
-    legend {
-      display: none;
-    }
+      > a {
+        float: left;
+        padding-right: 10px;
+        min-height: 60px;
+        display: inline-block;
+        margin: -2px 10px 0 0;
+        line-height: 60px;
 
-    .description {
-      display: none;
-    }
+        // Tablet mode
+        @include media($tablet) {
+          background-color: transparent;
+          color: $darker-gray;
+          text-decoration: underline;
+        }
 
-    .fieldset-wrapper{
-      float: inherit;
-
-      > .form-item {
-        margin-bottom: 10px;
-
-        // Media from-medium
-
-        @include from-medium() {
-          $gutter-width: .5em !global;
-          @include span(1 of 2);
-
-          &:nth-of-type(2n   2) {
-            @include omega;
+        // Media mobile
+        @include media($mobile) {
+          display: none;
+        }
+        .fieldset-title {
+          float: left;
+          @include media($tablet) {
+            right: 40px;
+          }
+          @include media($mobile) {
+            display: none;
           }
         }
       }
-    }
 
-    // Inputs styles
-
-    input {
-      background-color: $light-gray;
-      padding-right: 8px;
-      padding-left: 8px;
-      border: 1px solid $gray;
-    }
-
-    input,
-    .select-wrapper {
-      border-radius: 0;
-      width: 100%;
-    }
-
-    // Labels
-
-    label {
-      color: $black;
-      font-weight: 700;
-    }
-  }
-}
-
-html.js fieldset.collapsible .fieldset-legend {
-  background: none;
-}
-
-.page-search {
-  .search {
-    .form-actions a.fieldset-title {
-        display: none;
-    }
-  }
-}
-
-#search-block-form {
-  .form-actions {
-    a.fieldset-title {
-      @include  small-medium() {
-        display: none;
+      input[type="submit"] {
+        width: 40%;
+      }
+      input.extended-search-submit {
+        width: 24%;
       }
     }
-  }
-}
 
-fieldset#ting-search-terms-fieldset {
-  border: none !important;
-  position: relative;
-  top: 0;
-  padding-right: 0px;
+    #ting-search-terms-fieldset {
+      width: 75%;
+      float: left;
+      border: none;
+      position: relative;
+      top: 0;
+      padding: 0;
 
-  legend {
-    position: absolute;
-    top: -65px;
-    right: 155px;
-    padding: 23px 0;
-    margin: 0;
-
-    a {
-      color: #00b7e7;;
-    }
-  }
-
-  .fieldset-wrapper{
-    position: relative;
-    overflow: visibility !important;
-  }
-
-  .search-term-ops {
-    background: #e1e1e1;
-    max-width: 1180px;
-    min-width: 100%;
-    height: 30px;
-    padding-top: 10px;
-  }
-
-  div .search-term-op {
-    display: inline;
-    padding-right: 5px;
-    padding-left: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #4c4c4c;
-  }
-
-  .search-terms-more {
-    float: right;
-    margin-top: -22px;
-    font-style: italic;
-    padding-right: 14px;
-
-    a {
-      color: #4c4c4c;
-    }
-  }
-}
-
-.search {
-  .form-actions {
-
-    > a {
-    padding-right: 10px;
-    }
-  }
-}
-
-#ting-search-terms-container {
-  overflow: hidden;
-  background: $white;
-  margin-top: -10px;
-  margin-left: -5px;
-
-  ul {
-    max-height: 500px;
-    overflow-y:auto;
-    top: 0 !important;
-    z-index: 20 !important;
-    left: 0 !important;
-    margin-bottom: 0;
-    margin-right: 0;
-    min-width: 665px;
-
-    @media #{$tablet} {
-      max-width: 540px;
-    }
-
-    li.search-term {
-      border-bottom-style: solid;
-      border-bottom-color: #e1e1e1;
-      border-bottom-width: 1px;
-      padding-bottom: 10px;
-      padding-top: 10px;
-      list-style: none;
-    }
-    
-    li.search-term:hover {
-      background:  #ededed;
-    }
-
-    @include small(){
-      overflow-y: visible;
-    }
-  }
-
-  .search-term {
-    cursor: pointer;
-    padding-left: 15px;
-
-    .search-key {
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .search-description {
-      font-style: italic;
-      margin: 0;
-    }
-  }
-}
-
-div.search {
-  #search-block-form {
-    .fieldset-wrapper {
+      legend {
+        display: none;
+      }
+      &.collapsed {
+        display: none;
+      }
       #ting-search-terms-container {
-        height: 300px;
-        max-width: 850px;
-        min-width: 100%;
         overflow-y: scroll;
-        overflow-x: hidden;
+        width: 100%;
         border-style: solid;
         border-color: #e1e1e1;
         border-width: 1px;
+        background: $white;
 
         ul {
-          max-width: 850px;
-          min-width: 100%;
+          max-height: 500px;
+          top: 0 !important;
           left: 0 !important;
-          z-index: 20 !important;
+          margin-bottom: 0;
+          margin-right: 0;
+
+          li.search-term {
+            border-bottom-style: solid;
+            border-bottom-color: #e1e1e1;
+            border-bottom-width: 1px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            list-style: none;
+
+            cursor: pointer;
+            padding-left: 15px;
+
+            .search-key {
+              font-weight: bold;
+              margin: 0;
+            }
+
+            .search-description {
+              font-style: italic;
+              margin: 0;
+            }
+          }
+
+          li.search-term:hover {
+            background:  #ededed;
+          }
+
+          @include media($mobile) {
+            overflow-y: visible;
+          }
         }
       }
-    }
-  }
 
-  #ting-search-terms-fieldset {
-    .search-term-ops {
-      max-width: 850px;
-    }
-
-    legend a {
-      color: #00b7e7;
-    }
-
-    .search-term-ops {
-      border: solid;
-      border-width: 1px;
-      color: #e1e1e1;
-    }
-
-    div .search-term-op {
-      display: inline;
-      padding-right: 5px;
-      padding-left: 10px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .search-terms-more {
-      float: right;
-      margin-top: -32px;
-      font-style: italic;
-      padding-right: 14px;
-
-      a {
-        color: #4c4c4c;
-      }
-    }
-  }
-}
-
-.search fieldset.collapsible {
-  padding: 0;
-}
-
-@include small-medium() {
-  .form-autocomplete.input-limit {
-    padding-right: 167px;
-  }
-
-  fieldset#ting-search-terms-fieldset {
-    position: relative;
-    padding: 0;
-    margin-bottom: 0;
-
-    &.collapsible {
-     padding-top: 0;
-     padding-bottom: 0;
-    }
-
-    legend {
-      position: absolute;
-      top: -123px;
-      right: 20px;
-      padding-top: 0;
-    }
-
-    .search-term-ops {
-      max-width: 300px;
-      min-width: 100%;
-      margin-top: -5px;
-      margin-left: 0;
-      height: 60px;
-      border: solid;
-      border-width: 1px;
-      color: #e1e1e1;
-    }
-
-    div .search-term-op {
-      display: inline;
-      padding-right: 5px;
-      padding-left: 5px;
-    }
-
-    .search-terms-more {
-      display: block !important;
-      float: left;
-      padding-left: 6px;
-      margin-top: -22px;
-    }
-  }
-
-  #ting-search-terms-container {
-    height: 300px;
-    max-width: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin: 0;
-
-    ul {
-      z-index: 20 !important;
-      display: block !important;
-      height: 200px;
-      left: 0 !important;
-
-      li.search-term {
-        max-width: 300px;
-        min-width: 100%;
-        top: 0 !important;
-      }
-    }
-  }
-
-  div.search {
-    fieldset#ting-search-terms-fieldset {
-      padding-bottom: 0;
-      padding-top: 0;
       .search-term-ops {
-        margin-top: -5px;
-        margin-left: 0;
-        height: 60px
+        padding-top: 10px;
+        height: 30px;
+        border: solid;
+        border-width: 1px;
+        min-width: 100%;
+        max-width: 850px;
+        background: #e1e1e1;
+        color: #e1e1e1;
+
+        .search-term-op {
+          display: inline;
+          padding-right: 5px;
+          padding-left: 10px;
+          font-weight: bold;
+          cursor: pointer;
+          color: #4c4c4c;
+        }
       }
 
       .search-terms-more {
-        float: left;
+        float: right;
+        margin-top: -22px;
+        font-style: italic;
+        padding-right: 14px;
+
+        a {
+          color: #4c4c4c;
+        }
       }
     }
-  }
-}
-
-@include medium() {
-  fieldset#ting-search-terms-fieldset {
-    margin-bottom: 0;
-
-    legend {
-      position: absolute;
-      top: -118px;
-      right: 20px;
-      padding-top: 0;
-    }
-  }
-}
-
-
-// Page search
-
-.page-search {
-  .search {
-    .form-actions .fieldset-title.search-term,
-    #ting-search-terms-fieldset {
-      display: none;
-    }
-  } 
-}
-
-.unset-focus {
-  width: 309% !important;
-
-  &:focus {
-    content: 'none';
   }
 }
