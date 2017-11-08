@@ -15,6 +15,9 @@
 
   Drupal.behaviors.selectSearchTerms = {
     attach: function(context, settings) {
+      // Extended search button location.
+      $('.search .collapsible .fieldset-legend > a', context).insertBefore('.search .form-submit');
+
       var $searchField = $('input[name=search_block_form]');
 
       // Append logical operation to the search field input.
@@ -24,9 +27,6 @@
         }
         $searchField.focus();
       });
-
-      $('#ting-search-terms-fieldset a.fieldset-title').addClass( "search-term" );
-
 
       // Move focus on textfield on fieldset link click.
       $('#ting-search-terms-fieldset', context).on('mouseup', '.fieldset-title', function (event) {
@@ -104,77 +104,13 @@
     }
   };
 
-  function setInputPadding(){
-    $(document).ready(function() {
-   
-      if($('#ting-search-terms-fieldset').length) {
-        $('div.form-type-textfield.form-item-search-block-form > input.auto-submit.form-autocomplete').addClass('input-limit');
-      }
-    })
-  }
-
-  $(document).ready(function() {
-    // Define variables.
-   $('.search .collapsible a.search-term').insertBefore('.site-header .search .form-submit');
-
-    var search_input = $('.form-item-search-block-form input[name=search_block_form]', document);
-    var term_link = $('#search-block-form a.fieldset-title', document);
-    var filters_block = $('fieldset#ting-search-terms-fieldset');
-
-    // Default states.
-    term_link.addClass('closed');
-    search_input.focus();
-
-      if (search_input.is(':focus')) {
-        search_input.addClass('unset-focus');
-        term_link.css('display', 'block');
-
-        // Don't display filters box on page load on search results page.
-        if ($(document).find('body').hasClass('page-search')) {
-          term_link.css('display', 'none');
-        }
-
-        // If filters block is visible, disable core :focus action and add classes
-        // to "Advanced search" link.
-        if (filters_block.is(':visible')) {
-          search_input.addClass('unset-focus');
-          term_link.removeClass('closed');
-          term_link.addClass('opened');
-        }
-
-        // Handling "Advanced search" link click event.
-          term_link.on('click', function () {
-          // Toggling classes attached to "Advanced search" link.
-          $(this).toggleClass('opened closed');
-          if ($(this).hasClass('opened')) {
-            // Unsetting core :focus event in order to keep search input expanded
-            // state.
-            search_input.addClass('unset-focus');
-          }
-          else {
-            // Clear classes which are rewriting core behavior.
-            search_input.removeClass('unset-focus');
-            term_link.hide();
-          }
-        });
-
-        // Handling search input state when link is already visible.
-        if (term_link.is(':visible')) {
-          search_input.addClass('unset-focus');
-        }
-
-        // Tracking search input changes on click action.
-        search_input.on('click', function () {
-          search_input.trigger('widthChanged');
-        });
-
-        // Binding trigger which will track search input changes.
-        search_input.bind('widthChanged', function () {
-          search_input.addClass('unset-focus');
-          term_link.show();
-        });
-      }
-    });
-
-  setInputPadding();
+  // Extend toggleFiledset function in order to collapse other fieldsets.
+  Drupal.toggleFieldset = (function(toggleFieldset){
+    return function() {
+      // Call original function from collapse.js
+      toggleFieldset.apply(this, arguments);
+      // Add collapsed class to other fieldsets.
+      $('fieldset').not(arguments[0]).addClass('collapsed');
+    };
+  })(Drupal.toggleFieldset);
 })(jQuery);

@@ -21,6 +21,9 @@ function ting_search_terms_theme($existing, $type, $theme, $path) {
  * Implements hook_form_FORM_ID_alter().
  */
 function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
+  if (variable_get('ting_search_form_style', TING_SEARCH_FORM_STYLE_NORMAL) !== 'extended') {
+    return array();
+  }
   $path = drupal_get_path('module', 'ting_search_terms');
   $form['search-terms'] = array(
     '#type' => 'fieldset',
