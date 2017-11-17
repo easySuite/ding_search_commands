@@ -73,8 +73,16 @@
     opacity: 1;
   }
 }
-/* Colors variables
-   ========================================================================== */
+.page-search .pane-search-form #search-block-form .form-actions {
+  width: 280px;
+  right: 1px;
+}
+@media screen and (max-width: 600px) {
+  .page-search .pane-search-form #search-block-form .form-actions {
+    width: 70px;
+  }
+}
+
 .pane-search-form {
   position: relative;
 }
@@ -84,8 +92,13 @@
 .pane-search-form #search-block-form .form-actions {
   float: left;
   position: absolute;
-  width: auto;
-  right: 20%;
+  min-width: 410px;
+  right: 10%;
+}
+@media screen and (max-width: 600px) {
+  .pane-search-form #search-block-form .form-actions {
+    min-width: 50px;
+  }
 }
 .pane-search-form #search-block-form .form-actions > a {
   float: left;
@@ -98,13 +111,19 @@
 @media screen and (max-width: 950px) {
   .pane-search-form #search-block-form .form-actions > a {
     background-color: transparent;
-    color: #333;
+    color: #808285;
     text-decoration: underline;
   }
 }
 @media screen and (max-width: 600px) {
   .pane-search-form #search-block-form .form-actions > a {
     display: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pane-search-form #search-block-form .form-actions > a .element-invisible {
+    display: none;
+    height: 0;
   }
 }
 .pane-search-form #search-block-form .form-actions > a .fieldset-title {
@@ -122,6 +141,12 @@
 }
 .pane-search-form #search-block-form .form-actions input[type="submit"] {
   width: 40%;
+}
+@media screen and (max-width: 600px) {
+  .pane-search-form #search-block-form .form-actions input[type="submit"] {
+    float: right;
+    width: 142px;
+  }
 }
 .pane-search-form #search-block-form .form-actions input.extended-search-submit {
   width: 24%;
@@ -154,6 +179,11 @@
   left: 0 !important;
   margin-bottom: 0;
   margin-right: 0;
+}
+@media screen and (max-width: 950px) {
+  .pane-search-form #search-block-form #ting-search-terms-fieldset #ting-search-terms-container ul {
+    width: 450px;
+  }
 }
 .pane-search-form #search-block-form #ting-search-terms-fieldset #ting-search-terms-container ul li.search-term {
   border-bottom-style: solid;
