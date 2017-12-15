@@ -74,7 +74,6 @@
   }
 }
 .page-search .pane-search-form #search-block-form .form-actions {
-  width: 280px;
   right: 1px;
 }
 @media screen and (max-width: 600px) {
