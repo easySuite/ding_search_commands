@@ -46,11 +46,17 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
           'type' => 'setting',
         ),
         array(
+          'data' => $path . '/js/jquery.js',
+        ),
+        array(
           /*
            * Default jQuery ui doesn't support autocomplete widget,
            * jQuery ui 1.11 is inserted.
            */
           'data' => $path . '/js/jquery-ui.min.js',
+        ),
+        array(
+          'data' => $path . '/js/noconflict.js',
         ),
       ),
       'css' => array(
