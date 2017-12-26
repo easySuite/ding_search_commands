@@ -5,7 +5,6 @@
   .pane-search-form #search-block-form {
     .form-actions {
       right: 1px;
-
       @include media($mobile) {
         width: 70px;
       }
@@ -17,27 +16,12 @@
   position: relative;
 
   #search-block-form {
-    .form-item-search-block-form {
-      width: 75%;
-    }
-
     .form-actions {
-      float: left;
-      position: absolute;
-      min-width: 410px;
-      right: 10%;
-
-      @include media($mobile) {
-        min-width: 50px;
-      }
-
       > a {
-        float: left;
-        padding-right: 10px;
-        min-height: 60px;
-        display: inline-block;
-        margin: -2px 10px 0 0;
+        position: absolute;
+        right: 100px;
         line-height: 60px;
+        min-height: 60px;
 
         // Tablet mode
         @include media($tablet) {
@@ -67,21 +51,9 @@
           }
         }
       }
-
-      input[type="submit"] {
-        width: 40%;
-        @include media($mobile) {
-          float: right;
-          width: 142px;
-        }
-      }
-      input.extended-search-submit {
-        width: 24%;
-      }
     }
 
     #ting-search-terms-fieldset {
-      width: 75%;
       float: left;
       border: none;
       position: relative;
