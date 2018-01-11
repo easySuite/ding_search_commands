@@ -36,17 +36,18 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
     '#attached' => array(
       'js' => array(
         array(
-          'data' => $path . '/js/ting_search_terms.js',
-          'scope' => 'footer',
-        ),
-        array(
           'data' => array(
             'searchTerms' => _ting_search_terms_get_terms(),
           ),
           'type' => 'setting',
         ),
         array(
+          'data' => $path . '/js/ting_search_terms.js',
+          'scope' => 'footer',
+        ),
+        array(
           'data' => $path . '/js/jquery.js',
+          'group' => JS_LIBRARY,
         ),
         array(
           /*
@@ -54,9 +55,11 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
            * jQuery ui 1.11 is inserted.
            */
           'data' => $path . '/js/jquery-ui.min.js',
+          'group' => JS_LIBRARY,
         ),
         array(
           'data' => $path . '/js/noconflict.js',
+          'group' => JS_LIBRARY,
         ),
       ),
       'css' => array(
