@@ -12,16 +12,48 @@
   }
 }
 
+.mobile-search-is-open .header-inner section.search {
+  @include media($mobile) {
+    padding-bottom: 75px;
+  }
+}
+html .pane-search-form fieldset.collapsible.collapsed {
+  height: auto;
+}
+
 .pane-search-form {
   position: relative;
 
   #search-block-form {
     .form-actions {
+
       > a {
+        @include media($mobile) {
+          float: right;
+          right: 0;
+          display: block;
+          background: $white;
+          position: absolute;
+          padding-left: 20px;
+          margin: 0;
+          width: 100%;
+          height: 54px;
+          border-radius: 5px;
+          line-height: 54px;
+        }
+      }
+
+      & a:nth-child(2) {
+        @include media($mobile) {
+          top: 125px;
+        }
+      }
+
+      & a:only-of-type {
         position: absolute;
         right: 100px;
         line-height: 60px;
-        min-height: 60px;
+        height: 60px;
 
         // Tablet mode
         @include media($tablet) {
@@ -32,9 +64,18 @@
 
         // Media mobile
         @include media($mobile) {
-          display: none;
-          padding: 0;
+          top: 60px;
+          float: right;
+          right: 0;
+          display: block;
+          background: $white;
+          position: absolute;
+          padding-left: 20px;
           margin: 0;
+          width: 100%;
+          height: 54px;
+          border-radius: 5px;
+          line-height: 60px;
 
           .element-invisible {
             display: none;
@@ -42,6 +83,7 @@
           }
         }
         .fieldset-title {
+
           float: left;
           @include media($tablet) {
             right: 40px;
@@ -53,12 +95,42 @@
       }
     }
 
+      .form-actions.form-wrapper {
+        @include media($mobile) {
+          width: 100%;
+
+          input.form-submit {
+            width: 70px;
+            position: absolute;
+            right: 0;
+          }
+        }
+      }
+
     #ting-search-terms-fieldset {
       float: left;
       border: none;
       position: relative;
       top: 0;
       padding: 0;
+
+      @include media($tablet) {
+        margin-top: 60px;
+        width: 100%;
+        height: 355px;
+        overflow-y: visible;
+      }
+
+      @include media($mobile) {
+        margin-top: 60px;
+        width: 100%;
+        height: 255px;
+        overflow-y: visible;
+
+        .fieldset-wrapper {
+          width: 100%;
+        }
+      }
 
       legend {
         display: none;
@@ -83,6 +155,12 @@
 
           @include media($tablet) {
             width: 450px;
+          }
+
+          @include media($mobile) {
+            @include span(3 of 3);
+            width: 100% !important;
+            height: 270px;
           }
 
           li.search-term {
@@ -117,6 +195,10 @@
         }
       }
 
+      .search-term-op-bar {
+        min-height: 50px;
+      }
+
       .search-term-ops {
         padding-top: 10px;
         height: 30px;
@@ -142,6 +224,17 @@
         margin-top: -22px;
         font-style: italic;
         padding-right: 14px;
+
+        @include media($mobile) {
+          float: left;
+          padding-right: 14px;
+          background: #e1e1e1;
+          width: 100%;
+          padding-top: 10px;
+          margin-top: -1px;
+          padding-left: 10px;
+          height: 40px;
+        }
 
         a {
           color: #4c4c4c;
