@@ -113,4 +113,4 @@
       $('fieldset').not(arguments[0]).addClass('collapsed');
     };
   })(Drupal.toggleFieldset);
-})(jQuery1102);
+})(jQuery);
