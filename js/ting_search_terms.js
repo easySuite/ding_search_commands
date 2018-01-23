@@ -16,7 +16,6 @@
   Drupal.behaviors.selectSearchTerms = {
     attach: function(context, settings) {
       if (context === document) {
-        console.log('121212');
         // Extended search button location.
         $('.search .collapsible .fieldset-legend > a').insertBefore('.search .form-submit');
 
@@ -27,6 +26,10 @@
           if (getLastTerm($searchField.val())) {
             $searchField.val($searchField.val() + ' ' + $(this).text() + ' ');
           }
+          $searchField.focus();
+        });
+
+        $('#search-terms').on('click', function(e) {
           $searchField.focus();
         });
 
@@ -41,7 +44,7 @@
         $.widget('ting.searchTerms', $.ui.autocomplete, {
           // Render each item list and append it to autocomplete list.
           _renderItem: function (ul, item) {
-            return $("<li class='search-term'/>")
+            return $("<li class='search-term' />")
               .append('<p class="search-key">' + item.value + '</p><p class="search-description">' + item.description + '</p>')
               .appendTo(ul);
           }
