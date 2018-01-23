@@ -36,6 +36,16 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
     '#attached' => array(
       'js' => array(
         array(
+          'data' => array(
+            'searchTerms' => _ting_search_terms_get_terms(),
+          ),
+          'type' => 'setting',
+        ),
+        array(
+          'data' => $path . '/js/jquery.js',
+          'group' => JS_LIBRARY,
+        ),
+        array(
           /*
            * Default jQuery ui doesn't support autocomplete widget,
            * jQuery ui 1.11 is inserted.
@@ -44,14 +54,12 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
           'group' => JS_LIBRARY,
         ),
         array(
-          'data' => array(
-            'searchTerms' => _ting_search_terms_get_terms(),
-          ),
-          'type' => 'setting',
+          'data' => $path . '/js/noconflict.js',
+          'group' => JS_LIBRARY,
         ),
         array(
           'data' => $path . '/js/ting_search_terms.js',
-          'scope' => 'footer',
+          'scope' => 'footer'
         ),
       ),
       'css' => array(
