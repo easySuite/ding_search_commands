@@ -29,7 +29,7 @@
           $searchField.focus();
         });
 
-        $('#search-terms').on('click', function(e) {
+        $('#search-terms, #kommandosgning').on('click', function(e) {
           $searchField.focus();
         });
 
