@@ -21,6 +21,9 @@ function ting_search_terms_theme($existing, $type, $theme, $path) {
  * Implements hook_form_FORM_ID_alter().
  */
 function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
+  if (variable_get('ting_search_form_style', TING_SEARCH_FORM_STYLE_NORMAL) !== 'extended') {
+    return array();
+  }
   $path = drupal_get_path('module', 'ting_search_terms');
   $form['search-terms'] = array(
     '#type' => 'fieldset',
@@ -33,14 +36,14 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
     '#attached' => array(
       'js' => array(
         array(
-          'data' => $path . '/js/ting_search_terms.js',
-          'scope' => 'footer',
-        ),
-        array(
           'data' => array(
             'searchTerms' => _ting_search_terms_get_terms(),
           ),
           'type' => 'setting',
+        ),
+        array(
+          'data' => $path . '/js/jquery.js',
+          'group' => JS_LIBRARY,
         ),
         array(
           /*
@@ -48,6 +51,15 @@ function ting_search_terms_form_search_block_form_alter(&$form, &$form_state) {
            * jQuery ui 1.11 is inserted.
            */
           'data' => $path . '/js/jquery-ui.min.js',
+          'group' => JS_LIBRARY,
+        ),
+        array(
+          'data' => $path . '/js/noconflict.js',
+          'group' => JS_LIBRARY,
+        ),
+        array(
+          'data' => $path . '/js/ting_search_terms.js',
+          'cache' => FALSE,
         ),
       ),
       'css' => array(
@@ -89,21 +101,13 @@ function _ting_search_terms_get_terms() {
     $options = $cache->data;
   }
   else {
-    $service_url = variable_get('ting_search_url', '');
-    $service_url .= 'opensearch_cql.xml';
-
+    // Hardcoding fallback opensearch cql indexes url to v4.0.1.
+    $service_url = 'http://opensearch.addi.dk/4.0.1/opensearch_cql.xml';
     // Fetching status of opensearch CQL indexes.
-    $status = drupal_http_request($service_url);
+    $response = drupal_http_request($service_url);
 
-    if ($status->code != '200') {
-      // Hardcoding fallback opensearch cql indexes url to v4.0.1.
-      $service_url = 'http://opensearch.addi.dk/4.0.1/opensearch_cql.xml';
-    }
-
-    $data = file_get_contents($service_url);
-    if ($data) {
-      $xml = new \SimpleXMLElement($data);
-
+    if ($response->code == '200') {
+      $xml = new \SimpleXMLElement($response->data);
       foreach ($xml->indexInfo->index as $index) {
         $set = (string) $index->map->name['set'];
         if ($set == 'term') {
@@ -119,8 +123,9 @@ function _ting_search_terms_get_terms() {
           $options[] = array('value' => $key, 'description' => $description);
         }
       }
+      cache_set($cid, $options);
     }
-    cache_set($cid, $options);
+
   }
 
   return $options;

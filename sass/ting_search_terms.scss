@@ -1,306 +1,255 @@
-@import "_mixins";
+@import "../../../themes/ddbasic/sass/_base.scss";
 @import "susy";
-@import "zen-grids";
-
-/* Colors variables
-   ========================================================================== */
-
-$white:                   #fff;
-$dark-gray:               #ccc;
-$darker-gray:             #333;
-$light-gray:              #dadada;
-$lighter-gray:            #e5e5e5;
-$gray:                    #ccc;
-$black:                   #000;
-$gray-transparent-bg:     rgba( 0, 0, 0, 0.7);
-$red:                     #e10d3f;
-$orange:                  #ea6621;
-$green_light:             #b9c650;
-$blue:                    #008abe;
-$purple:                  #a34da4;
-$marine:                  #47cfd1;
-$yellow:                  #eae328;
-$green:                   #78a854;
-
-$zen-columns:             12;
-$zen-gutters:             20px;
-
-.form-autocomplete.input-limit {
-  padding-right: 280px;
-}
-
-html.js fieldset.collapsible .fieldset-legend {
-  background: none;
-}
 
 .page-search {
-  .search {
-    .form-actions a.fieldset-title {
-        display: none;
-    }
-  }
-}
-
-#search-block-form {
-  .form-actions {
-    a.fieldset-title {
-      @include  small-medium() {
-        display: none;
+  .pane-search-form #search-block-form {
+    .form-actions {
+      right: 1px;
+      @include media($mobile) {
+        width: 70px;
       }
     }
   }
 }
 
-fieldset#ting-search-terms-fieldset {
-  border: none !important;
+.mobile-search-is-open .header-inner section.search {
+  @include media($mobile) {
+    padding-bottom: 75px;
+  }
+}
+
+.mobile-search-is-open .header-wrapper section.search-block-form-extend-terms {
+  @include media($mobile) {
+    padding-bottom: 135px;
+
+    #search-block-form #ting-search-terms-fieldset {
+      margin-top: 115px;
+    }
+  }
+}
+
+html .pane-search-form fieldset.collapsible.collapsed {
+  height: auto;
+}
+
+.pane-search-form {
   position: relative;
-  top: 1px;
-  padding: 0;
-  margin-bottom: 0;
 
-  legend {
-    position: absolute;
-    top: -65px;
-    right: 155px;
-    padding: 23px 0;
-    margin: 0;
-
-    a {
-      color: #00b7e7;;
-    }
-  }
-
-  .fieldset-wrapper{
-    position: relative;
-  }
-
-  .search-term-ops {
-    background: #e1e1e1;
-    padding: 10px 0;
-  }
-
-  div .search-term-op {
-    display: inline;
-    padding-right: 5px;
-    padding-left: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #4c4c4c;
-  }
-
-  .search-terms-more {
-    float: right;
-    margin-top: -32px;
-    font-style: italic;
-    padding-right: 14px;
-
-    a {
-      color: #4c4c4c;
-    }
-  }
-}
-
-.search {
-  .form-actions {
-
-    > a {
-    padding-right: 10px;
-    }
-  }
-}
-
-#ting-search-terms-container {
-  overflow: hidden;
-  background: $white;
-  border-radius: 12px 12px 0 0;
-
-  ul {
-    max-height: 500px;
-    overflow-y:auto;
-    top: 0 !important;
-    z-index: 20 !important;
-    left: 0 !important;
-
-    li.search-term {
-      border-bottom-style: solid;
-      border-bottom-color: #e1e1e1;
-      border-bottom-width: 1px;
-      padding-bottom: 10px;
-      padding-top: 10px;
-    }
-    
-    li.search-term:hover {
-      background:  #ededed;
-    }
-
-    @include small(){
-      overflow-y: visible;
-    }
-  }
-
-  .search-term {
-    cursor: pointer;
-    padding-left: 15px;
-
-    .search-key {
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .search-description {
-      font-style: italic;
-      margin: 0;
-    }
-  }
-}
-
-div.search {
   #search-block-form {
-    .fieldset-wrapper {
-      #ting-search-terms-container {
-        height: 300px;
-        max-width: 850px;
-        min-width: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        border-style: solid;
-        border-color: #e1e1e1;
-        border-width: 1px;
+    .form-actions {
 
-        ul {
-          max-width: 850px;
-          min-width: 100%;
-          left: 0 !important;
-          z-index: 20 !important;
+      > a {
+        @include media($mobile) {
+          float: right;
+          right: 0;
+          display: block;
+          background: $white;
+          position: absolute;
+          padding-left: 20px;
+          margin: 0;
+          width: 100%;
+          height: 54px;
+          border-radius: 5px;
+          line-height: 54px;
+        }
+      }
+
+      & a:nth-child(2) {
+        @include media($mobile) {
+          top: 120px;
+        }
+      }
+
+      & a:only-of-type {
+        position: absolute;
+        right: 100px;
+        line-height: 60px;
+        height: 60px;
+
+        // Tablet mode
+        @include media($tablet) {
+          background-color: transparent;
+          color: $grey-dark;
+          text-decoration: underline;
+        }
+
+        // Media mobile
+        @include media($mobile) {
+          top: 60px;
+          float: right;
+          right: 0;
+          display: block;
+          background: $white;
+          position: absolute;
+          padding-left: 20px;
+          margin: 0;
+          width: 100%;
+          height: 54px;
+          border-radius: 5px;
+          line-height: 60px;
+
+          .element-invisible {
+            display: none;
+            height: 0
+          }
+        }
+        .fieldset-title {
+
+          float: left;
+          @include media($tablet) {
+            right: 40px;
+          }
+          @include media($mobile) {
+            display: none;
+          }
         }
       }
     }
-  }
 
-  #ting-search-terms-fieldset {
-    .search-term-ops {
-      max-width: 850px;
-    }
+      .form-actions.form-wrapper {
+        @include media($mobile) {
+          width: 100%;
 
-    legend a {
-      color: #00b7e7;
-    }
-
-    .search-term-ops {
-      border: solid;
-      border-width: 1px;
-      color: #e1e1e1;
-    }
-
-    div .search-term-op {
-      display: inline;
-      padding-right: 5px;
-      padding-left: 10px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .search-terms-more {
-      float: right;
-      margin-top: -32px;
-      font-style: italic;
-      padding-right: 14px;
-
-      a {
-        color: #4c4c4c;
+          input.form-submit {
+            width: 70px;
+            position: absolute;
+            right: 0;
+          }
+        }
       }
-    }
-  }
-}
 
-@include small() {
-  .form-autocomplete.input-limit {
-    padding-right: 167px;
-  }
-
-  fieldset#ting-search-terms-fieldset {
-    position: relative;
-    padding: 0;
-    margin-bottom: 0;
-
-    legend {
-      position: absolute;
-      top: -123px;
-      right: 20px;
-      padding-top: 0;
-    }
-
-    .search-term-ops {
-      max-width: 300px;
-      min-width: 100%;
-      margin-top: -5px;
-      margin-left: 0;
-      height: 60px;
-      border: solid;
-      border-width: 1px;
-      color: #e1e1e1;
-    }
-
-    div .search-term-op {
-      display: inline;
-      padding-right: 5px;
-      padding-left: 5px;
-    }
-
-    .search-terms-more {
-      display: block !important;
+    #ting-search-terms-fieldset {
       float: left;
-      padding-left: 6px;
-      margin-top: -32px;
-    }
-  }
+      border: none;
+      position: relative;
+      top: 0;
+      padding: 0;
 
-  #ting-search-terms-container {
-    height: 300px;
-    max-width: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin: 0;
-
-    ul {
-      z-index: 20 !important;
-      display: block !important;
-      height: 200px;
-      left: 0 !important;
-
-      li.search-term {
-        max-width: 300px;
-        min-width: 100%;
-        top: 0 !important;
+      @include media($tablet) {
+        width: 100%;
+        height: 355px;
+        overflow-y: visible;
       }
-    }
-  }
 
-  div.search {
-    fieldset#ting-search-terms-fieldset {
-      padding-bottom: 20px;
+      @include media($mobile) {
+        margin-top: 60px;
+        width: 100%;
+        height: 255px;
+        overflow-y: visible;
+
+        .fieldset-wrapper {
+          width: 100%;
+        }
+      }
+
+      legend {
+        display: none;
+      }
+      &.collapsed {
+        display: none;
+      }
+      #ting-search-terms-container {
+        overflow-y: scroll;
+        width: 100%;
+        border-style: solid;
+        border-color: #e1e1e1;
+        border-width: 1px;
+        background: $white;
+
+        ul {
+          max-height: 500px;
+          top: 0 !important;
+          left: 0 !important;
+          margin-bottom: 0;
+          margin-right: 0;
+
+          @include media($tablet) {
+            width: 450px;
+          }
+
+          @include media($mobile) {
+            @include span(3 of 3);
+            width: 100% !important;
+            height: 270px;
+          }
+
+          li.search-term {
+            border-bottom-style: solid;
+            border-bottom-color: #e1e1e1;
+            border-bottom-width: 1px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            list-style: none;
+
+            cursor: pointer;
+            padding-left: 15px;
+
+            .search-key {
+              font-weight: bold;
+              margin: 0;
+            }
+
+            .search-description {
+              font-style: italic;
+              margin: 0;
+            }
+          }
+
+          li.search-term:hover {
+            background:  #ededed;
+          }
+
+          @include media($mobile) {
+            overflow-y: visible;
+          }
+        }
+      }
+
+      .search-term-op-bar {
+        min-height: 50px;
+      }
+
       .search-term-ops {
-        margin-top: -5px;
-        margin-left: 0;
-        height: 60px
+        padding-top: 10px;
+        height: 30px;
+        border: solid;
+        border-width: 1px;
+        min-width: 100%;
+        max-width: 850px;
+        background: #e1e1e1;
+        color: #e1e1e1;
+
+        .search-term-op {
+          display: inline;
+          padding-right: 5px;
+          padding-left: 10px;
+          font-weight: bold;
+          cursor: pointer;
+          color: #4c4c4c;
+        }
       }
 
       .search-terms-more {
-        float: left;
+        float: right;
+        margin-top: -22px;
+        font-style: italic;
+        padding-right: 14px;
+
+        @include media($mobile) {
+          float: left;
+          padding-right: 14px;
+          background: #e1e1e1;
+          width: 100%;
+          padding-top: 10px;
+          margin-top: -1px;
+          padding-left: 10px;
+          height: 40px;
+        }
+
+        a {
+          color: #4c4c4c;
+        }
       }
-    }
-  }
-}
-
-@include medium() {
-  fieldset#ting-search-terms-fieldset {
-    margin-bottom: 0;
-
-    legend {
-      position: absolute;
-      top: -118px;
-      right: 20px;
-      padding-top: 0;
     }
   }
 }

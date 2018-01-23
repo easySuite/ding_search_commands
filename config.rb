@@ -1,5 +1,4 @@
 # First, require any additional compass plugins installed on your system.
-require 'zen-grids'
 require 'susy'
 # require 'breakpoint'
 
