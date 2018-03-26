@@ -76,8 +76,12 @@
 
             return false;
           },
+
           // Update searched term on focus.
           focus: function (event, ui) {
+            // Exclude contrib styles on item focus.
+            $('#ting-search-terms-container').find('.ui-widget-content').removeClass('ui-widget-content');
+            $('#ting-search-terms-container').find('.ui-state-focus').removeClass('ui-state-focus');
             // Prevent focus on mouse hover.
             if (event.keyCode === undefined) {
               return false;
@@ -106,6 +110,7 @@
               event.preventDefault();
             }
           });
+
       }
     }
   };
