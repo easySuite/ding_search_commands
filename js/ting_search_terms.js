@@ -101,16 +101,15 @@
           }
         })
         // Display all items on fieldset expand.
-          .focus(function () {
-            $(this).searchTerms("search", "");
-          })
-          // Prevent navigation to other item on TAB press.
-          .bind('keydown', function (event) {
-            if (event.keyCode === $.ui.keyCode.TAB) {
-              event.preventDefault();
-            }
-          });
-
+        .focus(function () {
+          $(this).searchTerms("search", "");
+        })
+        // Prevent navigation to other item on TAB press.
+        .bind('keydown', function (event) {
+          if (event.keyCode === $.ui.keyCode.TAB) {
+            event.preventDefault();
+          }
+        });
       }
     }
   };
