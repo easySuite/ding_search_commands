@@ -101,8 +101,9 @@ function _ting_search_terms_get_terms() {
     $options = $cache->data;
   }
   else {
+    $opensearch_url = variable_get('opensearch_url', '');
     // Hardcoding fallback opensearch cql indexes url to v4.0.1.
-    $service_url = 'http://opensearch.addi.dk/4.0.1/opensearch_cql.xml';
+    $service_url = $opensearch_url . '?showCqlFile&cql=opensearch_cql.xml';
     // Fetching status of opensearch CQL indexes.
     $response = drupal_http_request($service_url);
 
@@ -119,7 +120,7 @@ function _ting_search_terms_get_terms() {
           $lang = ($language->language == 'da') ? 0 : 1;
           $description = (string) $titles[$lang];
 
-          // The key 'value' is mandatory for the jquery ui autocomplete library.
+          // Key 'value' is mandatory for the jquery ui autocomplete library.
           $options[] = array('value' => $key, 'description' => $description);
         }
       }
