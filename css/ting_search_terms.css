@@ -9,10 +9,10 @@
     -webkit-transform: rotate(0deg);
   }
   50% {
-    -webkit-transform: rotate(-180deg);
+    -webkit-transform: rotate(180deg);
   }
   100% {
-    -webkit-transform: rotate(-360deg);
+    -webkit-transform: rotate(360deg);
   }
 }
 @-moz-keyframes spin {
@@ -20,10 +20,10 @@
     -moz-transform: rotate(0deg);
   }
   50% {
-    -moz-transform: rotate(-180deg);
+    -moz-transform: rotate(180deg);
   }
   100% {
-    -moz-transform: rotate(-360deg);
+    -moz-transform: rotate(360deg);
   }
 }
 @keyframes spin {
@@ -35,18 +35,18 @@
     transform: rotate(0deg);
   }
   50% {
-    -webkit-transform: rotate(-180deg);
-    -moz-transform: rotate(-180deg);
-    -ms-transform: rotate(-180deg);
-    -o-transform: rotate(-180deg);
-    transform: rotate(-180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   100% {
-    -webkit-transform: rotate(-360deg);
-    -moz-transform: rotate(-360deg);
-    -ms-transform: rotate(-360deg);
-    -o-transform: rotate(-360deg);
-    transform: rotate(-360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 @-webkit-keyframes fadein {
@@ -252,10 +252,11 @@ html .pane-search-form fieldset.collapsible.collapsed {
   padding-left: 15px;
 }
 .pane-search-form #search-block-form #ting-search-terms-fieldset #ting-search-terms-container ul li.search-term .search-key {
-  font-weight: bold;
+  font-family: "FaktPro-SemiBold", sans-serif;
   margin: 0;
 }
 .pane-search-form #search-block-form #ting-search-terms-fieldset #ting-search-terms-container ul li.search-term .search-description {
+  font-family: "FaktPro-Light", sans-serif;
   font-style: italic;
   margin: 0;
 }
@@ -271,7 +272,7 @@ html .pane-search-form fieldset.collapsible.collapsed {
   min-height: 50px;
 }
 .pane-search-form #search-block-form #ting-search-terms-fieldset .search-term-ops {
-  padding-top: 10px;
+  padding-top: 7px;
   height: 30px;
   border: solid;
   border-width: 1px;
@@ -281,10 +282,10 @@ html .pane-search-form fieldset.collapsible.collapsed {
   color: #e1e1e1;
 }
 .pane-search-form #search-block-form #ting-search-terms-fieldset .search-term-ops .search-term-op {
+  font-family: "FaktPro-SemiBold", sans-serif;
   display: inline;
   padding-right: 5px;
   padding-left: 10px;
-  font-weight: bold;
   cursor: pointer;
   color: #4c4c4c;
 }
@@ -293,6 +294,7 @@ html .pane-search-form fieldset.collapsible.collapsed {
   margin-top: -22px;
   font-style: italic;
   padding-right: 14px;
+  font-family: "FaktPro-Light", sans-serif;
 }
 @media screen and (max-width: 600px) {
   .pane-search-form #search-block-form #ting-search-terms-fieldset .search-terms-more {
