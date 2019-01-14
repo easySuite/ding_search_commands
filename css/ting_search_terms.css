@@ -97,6 +97,13 @@
   }
 }
 
+fieldset ul.ui-widget-content {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  color: #262626;
+}
+
 html .pane-search-form fieldset.collapsible.collapsed {
   height: auto;
 }
