@@ -28,6 +28,13 @@
   }
 }
 
+fieldset ul.ui-widget-content {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  color: $charcoal;
+}
+
 html .pane-search-form fieldset.collapsible.collapsed {
   height: auto;
 }
