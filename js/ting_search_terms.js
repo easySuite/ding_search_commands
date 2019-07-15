@@ -120,7 +120,7 @@
       // Call original function from collapse.js
       toggleFieldset.apply(this, arguments);
       // Add collapsed class to other fieldsets.
-      $('fieldset').not(arguments[0]).addClass('collapsed');
+      $('fieldset#ting-search-terms-fieldset').not(arguments[0]).addClass('collapsed');
     };
   })(Drupal.toggleFieldset);
 })(jQuery1102);
